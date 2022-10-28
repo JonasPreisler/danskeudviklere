@@ -1,0 +1,7 @@
+<%= render 'components/header' %>
+
+
+<% @developers.each do |developer| %>
+  <%= render 'developers/show', developer: developer %>
+<% end %>
+

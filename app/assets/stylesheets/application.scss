@@ -1,0 +1,141 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+$primary: #33727a;
+$primary-dark: #0F2224;
+$primary_brighter: #42949e;
+$primary_light: #eaf0f1;
+$secondary: #faeadd;
+$complementary: #7a3b33;
+$complementary_brighter: #9e4c42;
+$complementary_light: #f1ebea;
+$gray: #515354;
+
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: "Kanit", sans-serif !important;
+  background-color: #f3f2f2;
+}
+
+.pacifico,
+.pacifico span,
+.pacifico div {
+  font-family: "Pacifico", cursive;
+}
+
+
+// --------------- THIN SCROLLBAR ---------------
+
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+/* button */
+::-webkit-scrollbar-button {
+  background: #222;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #c2c1c1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f3f2f2;
+}
+
+/* The track NOT covered by the handle.
+::-webkit-scrollbar-track-piece {
+  background: #000;
+}
+
+/* Corner */
+::-webkit-scrollbar-corner {
+  background: #999;
+}
+
+/* Resizer */
+::-webkit-resizer {
+  background: #414141;
+}
+
+// --------------- END OF THIN SCROLLBAR ---------------
+
+
+
+.btn-primary,
+.page-item.active .page-link {
+  background-color: $primary !important;
+  border-color: $primary !important;
+  color: white !important;
+}
+.btn-outline-primary {
+  border-color: $primary !important;
+  color: $primary !important;
+  &:hover {
+    background-color: #f3f2f2 !important;
+  }
+}
+
+
+
+.tx-primary {
+  color: $primary !important;
+}
+.text-light-gray {
+  color: #c2bdbd !important;
+}
+
+.background-primary {
+  background-color: $primary !important;
+}
+.background-primary-dark {
+  background-color: $primary-dark !important;
+}
+.background-secondary {
+  background-color: $secondary !important;
+}
+a {
+  color: inherit !important;
+  text-decoration: inherit !important;
+}
+
+
+.pointer {
+  cursor: pointer;
+}
+
+
+nav .nav-item img {
+  max-width: 40px;
+}
+
+.container-lg {
+  max-width: 950px;
+}

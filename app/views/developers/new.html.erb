@@ -1,0 +1,9 @@
+<% if @referrer == 'form' %>
+  <%= render 'form' %>
+<% else %>
+  <div class='position-absolute top-50 start-50 translate-middle'>
+
+    <%= link_to 'Start', "?ref=form", class: 'btn btn-primary btn-lg shadow-sm' %>
+
+  </div>
+<% end %>

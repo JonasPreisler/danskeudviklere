@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg text-light background-primary-dark mb-4 navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Danske Udviklere</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <% if account_signed_in? %>
+          <li class="nav-item">
+            <img src='<%= AvatarComponent.new(current_account).image_40px %>' class='rounded-circle pointer' href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <ul class="dropdown-menu dropdown-menu-end m-1">
+              <li><%= link_to 'Min udvikler profil', dev_path(current_account), class: 'dropdown-item' %></li>
+              <li><%= link_to 'Min virksomheds profil', bus_path(current_account), class: 'dropdown-item' %></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><%= link_to 'Log ud', destroy_account_session_path, class: 'dropdown-item', method: :delete %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Log ind', new_account_session_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Registrer', new_account_registration_path, class: 'nav-link btn btn-secondary' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
