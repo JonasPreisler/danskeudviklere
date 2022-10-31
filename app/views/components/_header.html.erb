@@ -2,6 +2,7 @@
   <div class="container-fluid py-5">
     <h1 class="display-5 fw-bold"><%= Developer.all.size %> danske udviklere</h1>
     <p class="col-md-8 fs-4">Søg i <%= ProgrammingLanguage.all.size %> programmerings sprog og chat med matchende kandidater.</p>
-    <button class="btn btn-primary btn-lg" type="button">Søg i listen</button>
+    <a class="btn btn-primary btn-lg" href='<%= developers_path %>'>Søg i listen</a>
+    <a class="btn btn-primary btn-lg" href='<%= consoles_path %>'>Consoles</a>
   </div>
 </div>

@@ -1,0 +1,10 @@
+<%= link_to 'Add new console', new_console_path %>
+
+<% @consoles.each do |console| %>
+
+  <div>
+    <%= console.formatted_name %>
+  </div>
+
+<% end %>
+
