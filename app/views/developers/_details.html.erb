@@ -1,0 +1,68 @@
+<div class='bg-white rounded shadow-sm p-3 developer-details'>
+
+  <div class='py-2'>
+    <div class='small-title mb-2'>SPROG/FRAMEWORKS</div>
+    <% @developer.programming_languages.each do |lang| %>
+      <div class='bg-primary text-white rounded p-1 px-2 d-inline-block me-1 mb-1 shadow-sm'><%= lang %></div>
+    <% end %>
+  </div>
+  <hr>
+  <div class='py-2'>
+    <div class='small-title mb-2'>ROLLER</div>
+    <% $DEVELOPER_ROLE_TYPES.each do |role| %>
+      <div class='pb-2 
+        <% if @developer.role_types.include?(role) %>
+          tx-primary
+        <% else %>
+          opacity-25
+        <% end %>
+      '>
+        <div class='pe-2 d-inline'>
+          <i class="
+            <%  if @developer.role_types.include?(role) %>
+              fa-solid
+            <% else %>
+              fa-regular
+            <% end %>
+          fa-circle-check"></i>
+        </div>
+        <%= t "developers.role_types.#{role}" %>
+      </div>
+    <% end %>
+  </div>
+  <hr>
+  <div class='py-2'>
+    <div class='small-title'>BY</div>
+    <%= @developer.city %>
+  </div>
+  <hr>
+  <% if @developer.website %>
+    <div class='py-2'>
+      <div class='row'>
+        <div class='col-2'>
+          <%= image_tag '/images/website.png' %>
+        </div>
+        <div class='col-10 text-truncate'>
+          <%= link_to @developer.website, target: :blank do %>
+            <%= @developer.website.gsub('https://', '') %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% if @developer.github%>
+    <div class='py-2'>
+      <div class='row'>
+        <div class='col-2'>
+          <%= image_tag '/images/github.png' %>
+        </div>
+        <div class='col-10 text-truncate'>
+          <%= link_to @developer.github, target: :blank do %>
+            <%= @developer.github.gsub('https://', '') %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>

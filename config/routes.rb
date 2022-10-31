@@ -10,4 +10,5 @@ Rails.application.routes.draw do
     resources :developers, path: 'udviklere'
     resources :businesses, path: 'virksomhed'
   end
+  get '/om', to: 'about#show', as: :about
 end

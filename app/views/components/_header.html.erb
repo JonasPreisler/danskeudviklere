@@ -2,7 +2,7 @@
   <canvas id="canvas" class='position-absolute w-100 h-100 start-0'></canvas>
   <div class="container-fluid py-5">
     <h1 class="display-5 fw-bold"><%= Developer.all.size %> danske udviklere</h1>
-    <p class="col-md-8 fs-4">Søg i <%= Language.all.size %> programmerings sprog og chat med matchende kandidater.</p>
+    <p class="col-md-8 fs-4">Søg i <%= $DEVELOPER_ROLE_TYPES.size %> programmerings sprog og chat med matchende kandidater.</p>
     <a href='<%= developers_path %>' class="btn btn-primary btn-lg">Søg i listen</a>
   </div>
 </div>

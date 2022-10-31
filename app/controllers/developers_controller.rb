@@ -1,6 +1,7 @@
 class DevelopersController < ApplicationController
   before_action :set_developer, only: %i[ show update destroy ]
   before_action :authenticate_account!, only: %i[ new edit create update ]
+  before_action :redirect_if_account_already_has_a_developer, only: %i[new]
 
   def index
     @developers = Developer.all
@@ -24,7 +25,6 @@ class DevelopersController < ApplicationController
       if @developer.save
         format.html { redirect_to developer_url(@developer), notice: "Din udvikler profil blev oprettet" }
       else
-        p '@developer.errors.full_messages'
         p @developer.errors.full_messages
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -51,11 +51,15 @@ class DevelopersController < ApplicationController
 
   private
 
+    def redirect_if_account_already_has_a_developer
+      redirect_to developer_path(current_account.developer) if current_account.developer
+    end
+
     def set_developer
       @developer = Developer.friendly.find(params[:id])
     end
 
     def developer_params
-      params.require(:developer).permit(:profile_picture, :title, :about, :city, :first_name, :last_name, :website, :github, :search_status, :allow_notifications, role_types: [])
+      params.require(:developer).permit(:profile_picture, :title, :about, :city, :first_name, :last_name, :website, :github, :search_status, :allow_notifications, programming_languages: [], role_types: [])
     end
 end

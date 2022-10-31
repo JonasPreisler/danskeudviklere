@@ -30,7 +30,7 @@ class ProfilePictureUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :size_40px do
-    process resize_to_fill: [40, 40]
+    process resize_to_fill: [80, 80]
     # process resize_to_fit: [40, 40]
   end
 

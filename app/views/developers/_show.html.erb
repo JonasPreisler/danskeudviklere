@@ -1,0 +1,30 @@
+<div class="card border-0 shadow-sm h-100">
+  <div class="card-body">
+    
+    <div class='d-flex align-items-center'>
+      <div class="flex-shrink-0">
+        <%= image_tag developer.profile_picture.url(:size_40px), class: 'rounded shadow-sm' %>
+      </div>
+      <div class="flex-grow-1 ms-3">
+        <h5 class="card-title tx-primary_brighter"><%= developer.title %></h5>
+        <div><%= developer.name %></div>
+        <% developer.programming_languages.each do |lang| %>
+          <%= link_to developers_path(language: lang) do %>
+            <small class='tx-complementary_brighter bg-complementary_ultra_brighter rounded px-1 me-1 tag'><span class='opacity-50'>#</span> <%= lang %></small>
+          <% end %>
+        <% end %>
+      </div>
+      <div class='flex-shrink-0 mb-auto'>
+        <small class='tx-primary'>
+          <i class="fa-solid fa-location-dot"></i>
+          <%= developer.zip %>
+        </small>
+      </div>
+    </div>
+
+    <p class="card-text">
+      <div class='p-1 rounded'>
+      </div>
+    </p>
+  </div>
+</div>

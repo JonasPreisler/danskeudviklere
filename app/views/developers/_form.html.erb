@@ -66,7 +66,7 @@
               <select name='developer[city]' id="developer_city" class='form-control select2' required>
                 <option selected='selected'>Vælg by</option>
                 <%= zip_codes.each do |zip| %>
-                  <option value='<%= zip[0] %>'><%= zip[0] %> <%= zip[1] %></option>
+                  <option value='<%= zip[0] %> <%= zip[1] %>' <%= 'selected' if "#{zip[0]} #{zip[1]}" == @developer.city %>><%= zip[0] %> <%= zip[1] %></option>
                 <% end %>
               </select>
               <div class="invalid-feedback">
@@ -94,9 +94,23 @@
           <div class="row g-3">
             <div class="col-6">
               <label for='developer_profile_picture' class='text-muted'>Profil billede</label>
-              <%= f.file_field :profile_picture, class: 'form-control shadow-sm', required: true %>
+              <%= f.file_field :profile_picture, class: 'form-control shadow-sm' %>
               <div class="invalid-feedback">
                 Velg et profil billede. Dette øger dine chancer for at blive kontaktet.
+              </div>
+              <div class="valid-feedback">
+                👍🏼
+              </div>
+            </div>
+            <div class='col-6'>
+              <label for="developer_programming_languages" class="text-muted nowrap">Sprog/frameworks</label>
+              <select name='[developer]programming_languages[]' multiple='multiple' id="developer_programming_languages" class='form-control select2 w-100' required>
+                <%= $DEVELOPER_LANGUAGES.sort.each do |language| %>
+                  <option value='<%= language %>' <%= 'selected' if @developer.programming_languages && @developer.programming_languages.include?(language) %>><%= language %></option>
+                <% end %>
+              </select>
+              <div class="invalid-feedback">
+                Vælg sprog/frameworks
               </div>
               <div class="valid-feedback">
                 👍🏼
@@ -118,54 +132,26 @@
       <div class='col-md-9'>
         <div class='py-3'>
           <div class='fs-5 pb-3'>Søge status</div>
-          <div class="form-check py-2">
-            <input class="form-check-input" type="radio" name="developer[search_status]" id="developer_search_status_actively_looking" value='is_active' checked>
-            <label class="form-check-label pointer" for="developer_search_status_actively_looking">
-              Søger aktivt
-              <div class='text-muted'>Din profil er offentlig</div>
-            </label>
-          </div>
-          <div class="form-check py-2">
-            <input class="form-check-input" type="radio" name="developer[search_status]" id="developer_search_status_unavailable" value='unavailable'>
-            <label class="form-check-label pointer" for="developer_search_status_unavailable">
-              Ikke ledig pt
-              <div class='text-muted'>Din profil er offentlig</div>
-            </label>
-          </div><div class="form-check py-2">
-            <input class="form-check-input" type="radio" name="developer[search_status]" id="developer_search_status_invisible" value='invisible'>
-            <label class="form-check-label pointer" for="developer_search_status_invisible">
-              Ikke synlig
-              <div class='text-muted'>Din profil er skjult</div>
-            </label>
-          </div>
+          <% $DEVELOPER_SEARCH_STATUSES.each do |status| %>
+            <div class="form-check py-2">
+              <input class="form-check-input" type="radio" name="developer[search_status]" id="developer_search_status_<%= status %>" value='<%= status %>' <%= 'checked' if @developer.search_status == status %>>
+              <label class="form-check-label pointer" for="developer_search_status_<%= status %>">
+                <%= t "developers.search_statuses.#{status}" %>
+              </label>
+            </div>
+          <% end %>
         </div>
 
         <div class='py-3'>
           <div class='fs-5 pb-3'>Hvilken type(r) søger du?</div>
-          <div class="form-check py-2">
-            <input class="form-check-input" name='developer[role_types][]' type="checkbox" value="fulltime" id="developer_role_types_fulltime" <%= 'checked' unless current_account.developer && current_account.developer.role_types.exclude?('fulltime') %>>
-            <label class="form-check-label pointer" for="developer_role_types_fulltime">
-              Fuldtid
-            </label>
-          </div>
-          <div class="form-check py-2">
-            <input class="form-check-input" name='developer[role_types][]' type="checkbox" value="parttime" id="developer_role_types_parttime">
-            <label class="form-check-label pointer" for="developer_role_types_parttime">
-              Deltid
-            </label>
-          </div>
-          <div class="form-check py-2">
-            <input class="form-check-input" name='developer[role_types][]' type="checkbox" value="remote" id="developer_role_types_remote">
-            <label class="form-check-label pointer" for="developer_role_types_remote">
-              Remote
-            </label>
-          </div>
-          <div class="form-check py-2">
-            <input class="form-check-input" name='developer[role_types][]' type="checkbox" value="on_site" id="developer_role_types_on_site">
-            <label class="form-check-label pointer" for="developer_role_types_on_site">
-              On site
-            </label>
-          </div>
+          <% $DEVELOPER_ROLE_TYPES.each do |role| %>
+            <div class="form-check py-2">
+              <input class="form-check-input" name='developer[role_types][]' type="checkbox" value="<%= role %>" id="developer_role_types_<%= role %>" <%= 'checked' if @developer.role_types && @developer.role_types.include?("#{role}") %>>
+              <label class="form-check-label pointer" for="developer_role_types_<%= role %>">
+                <%= t "developers.role_types.#{role}" %>
+              </label>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -212,12 +198,12 @@
     </div>
   </div>
 
-
   <div class='text-end pt-3'>
-    <%= f.submit 'Opret profil', class: 'btn btn-primary shadow-sm' %>
+    <%= f.submit "#{'Opret profil' if action_name == 'new'}#{'Opdater profil' if action_name == 'edit'}", class: 'btn btn-primary shadow-sm' %>
   </div>
 
 <% end %>
+
 
 
 <script>
@@ -241,7 +227,7 @@
   })
 })()
 </script>
-
+<%= @developer.programming_languages %>
 
 <script>
   $('.select2').select2({
@@ -254,4 +240,6 @@
         return markup;
     }
   });
+
+
 </script>

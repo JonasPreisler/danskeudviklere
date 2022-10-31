@@ -1,24 +1,27 @@
-<div class="p-3 p-sm-5 mb-4 bg-light rounded-3 mb-4 bg-light rounded-3 shadow-sm position-relative bg-pattern-circuit">
-  <div class="container-fluid py-5">
-    <%= link_to 'Rediger', edit_developer_path(@developer), class: 'btn btn-outline-secondary bg-white position-absolute top-0 end-0 mt-3 me-3' if account_signed_in? && @current_developer && @current_developer == @developer %>
-    <%= image_tag @developer.profile_picture.url(:size_200px), class: 'rounded-circle position-absolute shadow-sm profile-picture' %>
-  </div>
-</div>
-<div class='row'>
-  <div class='col-md-4 col-6'></div>
-  <div class='col-md-8 col-6'>
-    <h1><%= @developer.name %></h1>
-  </div>
-</div>
-<div class='row'>
-  <div class='col-md-8'>
-    <div class='p-5'>
-      <%= @developer.about %>
+<div class='developer-show'>
+  <div class="p-3 p-sm-5 mb-4 bg-light rounded-3 mb-4 bg-light rounded-3 shadow-sm position-relative bg-pattern-circuit">
+    <div class="container-fluid py-5">
+      <%= link_to 'Rediger', edit_developer_path(@developer), class: 'btn btn-outline-secondary bg-white position-absolute top-0 end-0 mt-3 me-3' if account_signed_in? && @current_developer && @current_developer == @developer %>
+      <%= image_tag @developer.profile_picture.url(:size_200px), class: 'rounded-circle position-absolute shadow-sm profile-picture' %>
     </div>
   </div>
-  <div class='col-md-4'>
-    <div class='bg-white rounded shadow-sm p-3'>
-      <h2>Detaljer</h2>
+  <div class='row'>
+    <div class='col-md-8'>
+      <div class='pt-5 p-3 p-md-5 about'>
+        <div class='pb-3'>
+          <h1 class='tx-primary_brighter'><%= @developer.title %></h1>
+          <h2 class='text-muted fw-bold'><%= @developer.name %></h2>
+        </div>
+
+        <hr>
+
+        <div class='pt-3'>
+          <%= @developer.about %>
+        </div>
+      </div>
+    </div>
+    <div class='col-md-4'>
+      <%= render 'developers/details' %>
     </div>
   </div>
 </div>

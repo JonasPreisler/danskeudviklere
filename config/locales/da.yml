@@ -156,3 +156,13 @@ da:
       not_saved:
         one: 'En fejl medførte, at denne %{resource} ikke kunne gemmes:'
         other: "%{count} fejl medførte, at denne %{resource} ikke kunne gemmes:"
+  developers:
+    role_types:
+      fulltime: Fuldtid
+      parttime: Deltid
+      Remote: Remote
+      Onsite: Kontor
+    search_statuses:
+      is_active: Aktivt søgende
+      unavaiable: Ikke ledig
+      invisible: Usynlig

@@ -22,6 +22,7 @@ $primary_light: #eaf0f1;
 $secondary: #faeadd;
 $complementary: #7a3b33;
 $complementary_brighter: #9e4c42;
+$complementary_ultra_brighter: #f5edec;
 $complementary_light: #f1ebea;
 $gray: #515354;
 
@@ -88,6 +89,12 @@ body {
 // --------------- END OF THIN SCROLLBAR ---------------
 
 
+.bg-primary {
+  background-color: $primary !important;
+}
+.bg-primary_light {
+  background-color: $primary_light;
+}
 
 .btn-primary,
 .page-item.active .page-link {
@@ -103,7 +110,21 @@ body {
   }
 }
 
+.bg-complementary_ultra_brighter {
+  background-color: $complementary_ultra_brighter;
+}
 
+.tx-complementary_brighter {
+  color: $complementary_brighter !important;
+}
+
+.tx-primary_brighter {
+  color: $primary_brighter;
+}
+
+.bg-primary_brighter {
+  background-color: $primary_brighter;
+}
 
 .tx-primary {
   color: $primary !important;
@@ -148,4 +169,38 @@ nav .nav-item img {
   @media only screen and (max-width: 600px) {
     width: 150px;
   }
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.developer-show {
+  img {
+    bottom: -60px;
+  }
+  .about {
+    line-height: 2rem;
+  }
+}
+
+.developer-details {
+  img {
+    width: 30px;
+    opacity: 25%;
+  }
+  .small-title {
+    color: #aaa;
+    font-size: 14px;
+  }
+  a:hover {
+    color: $primary !important;
+  }
+}
+
+
+.tag:hover {
+  color: $complementary !important;
+  opacity: 80%;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
 }
