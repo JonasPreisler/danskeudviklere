@@ -80,3 +80,4 @@ gem 'devise'
 gem 'carrierwave', '~> 2.0'
 gem "rmagick"
 
+gem 'friendly_id'

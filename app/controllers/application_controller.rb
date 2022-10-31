@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def set_current_developer
     if account_signed_in? && current_account.developer
-      @current_developer = curren_account.developer
+      @current_developer = current_account.developer
     end
   end
 

@@ -1,9 +1,32 @@
-<% if @referrer == 'form' %>
-  <%= render 'form' %>
-<% else %>
-  <div class='position-absolute top-50 start-50 translate-middle'>
+<% if @referrer == 'intro' %>
 
-    <%= link_to 'Start', "?ref=form", class: 'btn btn-primary btn-lg shadow-sm' %>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
 
+  <% content_for :head do %>
+    <%= javascript_import_module_tag "custom/bg-animation" %>
+  <% end %>
+
+  <div class='bg-white rounded mt-5 shadow-sm h-75 position-relative'>
+    <canvas id="canvas" class='position-absolute w-100 h-100 start-0'></canvas>
+    <div class='position-absolute w-100 h-100 p-4 d-flex align-content-around flex-wrap'>
+      <div class='d-flex align-content-around flex-wrap h-100'>
+        <div>
+          <h1 class='fw-bold tx-primary'>ORPET PROFIL</h1>
+        </div>
+
+        <div class='text-muted fs-5'>
+          Bliv synlig på oversigten over danske udviklere. <br> Når du har en synlig profil, kan virksomheder kontakte dig igennem platformen med henblik på at hyre dig til et job eller en opgave.
+          <br>
+          Det er <strong>gratis</strong> for udviklere at bruge platformen.
+        </div>
+
+        <div>
+          <%= link_to 'Ok, cool!', new_developer_path, class: 'btn btn-primary btn-lg shadow-sm' %>
+        </div>
+      </div>
+    </div>
   </div>
+<% else %>
+  <%= render 'form', method: 'post', action: '/udviklere' %>
 <% end %>
+

@@ -11,7 +11,7 @@ class CreateDevelopers < ActiveRecord::Migration[7.0]
       t.string :website
       t.string :github
       t.string :role_types, array: true
-      t.string :search_types, array: true
+      t.integer :search_status, default: 0
       t.boolean :allow_notifications, default: true
 
       t.timestamps

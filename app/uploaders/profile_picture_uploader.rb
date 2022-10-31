@@ -30,10 +30,18 @@ class ProfilePictureUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :size_40px do
-    process resize_to_fit: [40, 40]
+    process resize_to_fill: [40, 40]
+    # process resize_to_fit: [40, 40]
   end
-  version :size_100px do
-    process resize_to_fit: [100, 100]
+
+  # def resize_to_fill(200, 200, gravity='centre')
+  #   process :resize_to_fill => [width, height, gravity]
+  # end
+
+  version :size_200px do
+    process resize_to_fill: [400, 400]
+    # process resize_to_fill: [200, 200], combine_options: [{quality: 100}]
+    # process resize_to_fit: [200, 200]
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.

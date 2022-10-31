@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Du</title>
+    <title>Danske Udviklere</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -29,12 +29,23 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+
+    <% if ['conversations'].include?(controller_name) %>
+      <script type="module">
+        import "@hotwired/turbo-rails"
+      </script>
+    <% end %>
+
   </head>
 
   <body class='position-relative'>
+    <%= yield :head %>
     <%= render 'components/nav' %>
-    <div class='container-lg py-3'>
-      <p class="notice"><%= notice %><%= alert %></p>
+    <div class='container-lg py-3 h-100'>
+      <%# <p class="notice"> %>
+        <%#= notice %><%#= alert %>
+      <%# </p> %>
       <%= yield %>
     </div>
     <%= custom_bootstrap_flash %>

@@ -24,5 +24,13 @@ module Du
 
     config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+    config.i18n.default_locale = :'da'
+
+    config.time_zone =  if Rails.env.development?
+                          'Beijing'
+                        else
+                          'Copenhagen'
+                        end
+
   end
 end

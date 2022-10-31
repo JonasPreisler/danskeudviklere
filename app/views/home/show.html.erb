@@ -5,3 +5,9 @@
   <%= render 'developers/show', developer: developer %>
 <% end %>
 
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+
+<% content_for :head do %>
+  <%= javascript_import_module_tag "custom/bg-animation" %>
+<% end %>
