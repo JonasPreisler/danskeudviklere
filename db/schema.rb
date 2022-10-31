@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_28_002546) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_31_063352) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,18 +55,39 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_28_002546) do
     t.index ["account_id"], name: "index_developers_on_account_id"
   end
 
-  create_table "experiences", force: :cascade do |t|
-    t.bigint "account_id", null: false
-    t.bigint "programming_language_id", null: false
-    t.integer "duration_in_years"
+  create_table "developers_languages", force: :cascade do |t|
+    t.bigint "developer_id", null: false
+    t.bigint "language_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["developer_id"], name: "index_developers_languages_on_developer_id"
+    t.index ["language_id"], name: "index_developers_languages_on_language_id"
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.bigint "developer_id", null: false
     t.text "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_experiences_on_account_id"
-    t.index ["programming_language_id"], name: "index_experiences_on_programming_language_id"
+    t.index ["developer_id"], name: "index_projects_on_developer_id"
   end
 
-  create_table "programming_languages", force: :cascade do |t|
+  create_table "projects_tools", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.bigint "tool_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_projects_tools_on_project_id"
+    t.index ["tool_id"], name: "index_projects_tools_on_tool_id"
+  end
+
+  create_table "tools", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -74,6 +95,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_28_002546) do
 
   add_foreign_key "businesses", "accounts"
   add_foreign_key "developers", "accounts"
-  add_foreign_key "experiences", "accounts"
-  add_foreign_key "experiences", "programming_languages"
+  add_foreign_key "developers_languages", "developers"
+  add_foreign_key "developers_languages", "languages"
+  add_foreign_key "projects", "developers"
+  add_foreign_key "projects_tools", "projects"
+  add_foreign_key "projects_tools", "tools"
 end

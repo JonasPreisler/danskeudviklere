@@ -1,7 +1,10 @@
 class Developer < ApplicationRecord
   belongs_to :account
-  has_many :experiences
-  has_many :programming_languages, through: :experiences
+  has_many :projects
+  has_many :developers_languages
+  has_many :languages, through: :developers_languages
+  has_many :tools, through: :projects
+  validates_presence_of :first_name, :last_name, :title, :about, :role_types, :search_types
 
   mount_uploader :profile_picture, ProfilePictureUploader
 
@@ -9,7 +12,7 @@ class Developer < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  def programming_language_names
-    programming_languages.pluck(:name).join(', ')
+  def language_names
+    languages.pluck(:name).join(', ')
   end
 end

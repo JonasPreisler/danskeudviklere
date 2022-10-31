@@ -3,15 +3,19 @@ require 'rails_helper'
 RSpec.describe Developer, type: :model do
 
   context 'associations' do
-    it "has many programming_languages" do
-      should respond_to(:programming_languages)
-    end
-    it "has many experiences" do
-      should respond_to(:experiences)
-    end
-    it 'should belong to account' do
-      dev = Developer.reflect_on_association(:account)
-      expect(dev.macro).to eq(:belongs_to)    
-    end
+    it { should have_many(:projects) }
+    it { should have_many(:developers_languages) }
+    it { should have_many(:languages).through(:developers_languages) }
+    it { should belong_to(:account) }
   end
+
+  context 'validations' do
+    it { should validate_presence_of(:about) }
+    it { should validate_presence_of(:title) }
+    it { should validate_presence_of(:first_name) }
+    it { should validate_presence_of(:last_name) }
+    it { should validate_presence_of(:role_types) }
+    it { should validate_presence_of(:search_types) }
+  end
+
 end

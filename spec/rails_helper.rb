@@ -60,4 +60,33 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+
+  ######################### DEVISE #########################
+
+  # Add login/logout helpers from Devise
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
+
+  # Include Warden test helpers specifically for login/logout
+  config.include Warden::Test::Helpers
+
+  # Add capybara DSL
+  config.include Capybara::DSL
+
+  # Tear down signed in user after each test
+  config.after :each do
+    Warden.test_reset!
+  end
+
+  ######################### END OF DEVISE #########################
+
+  
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
 end
