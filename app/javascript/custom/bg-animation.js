@@ -24,7 +24,7 @@ Animate.prototype.options = {
   distance: 100, // Distance to move points
   lineColor: '66, 148, 158',
   circleColor: '66, 148, 158',
-  radius: 1,
+  radius: 2,
   lineWidth: 1,
   lines: 3,  // Number of closest lines to draw
   updateClosest : false, // Update closet points each loop

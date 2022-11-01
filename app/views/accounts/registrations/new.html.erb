@@ -1,31 +1,41 @@
-<div class='position-absolute top-50 start-50 translate-middle'>
-  <h2>Registrer</h2>
+<% content_for :head do %>
+  <%= javascript_import_module_tag "custom/bg-animation" %>
+<% end %>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "accounts/shared/error_messages", resource: resource %>
+<canvas id="canvas" class='position-absolute w-100 h-100 start-0'></canvas>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
-    </div>
+<div style='min-height: 100vh;'>
+  <div class='position-absolute top-50 start-50 translate-middle'>
+    <h2>Registrer</h2>
 
-    <div class="field">
-      <%= f.label :kodeord %>
-      <% if @minimum_password_length %>
-      <em>(minimum <%= @minimum_password_length %> karakterer)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
-    </div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "accounts/shared/error_messages", resource: resource %>
 
-    <div class="field">
-      <%= f.label :bekræft_kodeord %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
-    </div>
+      <div class="field py-2">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+      </div>
 
-    <div class="pt-3 text-end">
-      <%= f.submit "Registrer", class: 'btn btn-primary' %>
-    </div>
-  <% end %>
+      <div class="field py-2">
+        <%= f.label :kodeord %>
+        <% if @minimum_password_length %>
+        <em>(minimum <%= @minimum_password_length %> karakterer)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+      </div>
 
-  <%#= render "accounts/shared/links" %>
+      <div class="field py-2">
+        <%= f.label :bekræft_kodeord %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+      </div>
+
+      <div class="pt-3 text-end">
+        <%= f.submit "Registrer", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+
+    <%#= render "accounts/shared/links" %>
+  </div>
+
 </div>

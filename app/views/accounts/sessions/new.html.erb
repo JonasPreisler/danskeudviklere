@@ -1,29 +1,39 @@
-<div class='position-absolute top-50 start-50 translate-middle'>
-  <h2>Log ind</h2>
+<% content_for :head do %>
+  <%= javascript_import_module_tag "custom/bg-animation" %>
+<% end %>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
-    </div>
+<canvas id="canvas" class='position-absolute w-100 h-100 start-0'></canvas>
 
-    <div class="field">
-      <%= f.label :kodeord %><br />
-      <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
-    </div>
+<div style='min-height: 100vh;'>
+  <div class='position-absolute top-50 start-50 translate-middle'>
+    <h2>Log ind</h2>
 
-    <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <label for='account_remember_me' class='pointer'>
-          Husk mig
-        </label>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field py-2">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+      </div>
+
+      <div class="field py-2">
+        <%= f.label :kodeord %><br />
+        <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field py-2">
+          <%= f.check_box :remember_me %>
+          <label for='account_remember_me' class='pointer'>
+            Husk mig
+          </label>
+        </div>
+      <% end %>
+
+      <div class="pt-3 text-end">
+        <%= f.submit "Log ind", class: 'btn btn-primary' %>
       </div>
     <% end %>
 
-    <div class="pt-3 text-end">
-      <%= f.submit "Log ind", class: 'btn btn-primary' %>
-    </div>
-  <% end %>
-
+  </div>
 </div>
+
