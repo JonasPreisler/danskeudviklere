@@ -66,7 +66,7 @@
               </div>
             </div>
             <div class="col">
-              <label for="developer_city" class="text-muted">Postnummer</label>
+              <label for="developer_city" class="text-muted">Område</label>
               <select name='developer[city]' id="developer_city" class='form-control select2' required>
                 <option selected='selected'>Vælg by</option>
                 <%= $DEVELOPER_COUNTRY_AREAS.each do |area| %>
@@ -74,7 +74,7 @@
                 <% end %>
               </select>
               <div class="invalid-feedback">
-                Vælg postnummer
+                Vælg dit område
               </div>
               <div class="valid-feedback">
                 👍🏼
@@ -149,10 +149,22 @@
         <div class='py-3 role-types'>
           <div class='fs-5 pb-3'>Hvilken type(r) søger du?</div>
           <% $DEVELOPER_ROLE_TYPES.each do |role| %>
-            <div class="form-check py-2">
+            <div class="form-check py-2 ps-5">
               <input class="form-check-input" name='developer[role_types][]' type="checkbox" value="<%= role %>" id="developer_role_types_<%= role %>" <%= 'checked' if @developer.role_types && @developer.role_types.include?("#{role}") %>>
               <label class="form-check-label pointer" for="developer_role_types_<%= role %>">
                 <%= t "developers.role_types.#{role}" %>
+              </label>
+            </div>
+          <% end %>
+        </div>
+
+        <div class='py-3 role-types'>
+          <div class='fs-5 pb-3'>Hvilket level søger du?</div>
+          <% $DEVELOPER_ROLE_LEVELS.each do |role| %>
+            <div class="form-check py-2 ps-5">
+              <input class="form-check-input" name='developer[role_levels][]' type="checkbox" value="<%= role %>" id="developer_role_levels_<%= role %>" <%= 'checked' if @developer.role_levels && @developer.role_levels.include?("#{role}") %>>
+              <label class="form-check-label pointer" for="developer_role_levels_<%= role %>">
+                <%= t "developers.role_levels.#{role}" %>
               </label>
             </div>
           <% end %>

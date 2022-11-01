@@ -29,6 +29,10 @@ da:
       user: Bruger
     errors:
       models:
+        account: 
+          attributes:
+            password_confirmation:
+              confirmation: Kodeordene er ikke ens
         developer:
           attributes:
             account:
@@ -162,6 +166,10 @@ da:
       parttime: Deltid
       Remote: Remote
       Onsite: Kontor
+    role_levels:
+      junior: Junior
+      midlevel: Midlevel
+      senior: Senior
     search_statuses:
       is_active: Aktivt søgende
       unavailable: Ikke ledig
@@ -173,3 +181,5 @@ da:
         filter_lang: 'Søg...'
         filter_cities: 'Søg postnummer...'
         no_results: 'Ingen resultater'
+
+

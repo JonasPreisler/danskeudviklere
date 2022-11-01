@@ -1,10 +1,10 @@
 <div class='pb-3'>
   <div class='py-1 px--2 breadcrumbs tx-13 text-muted d-inline'>
-    <% if @developer && current_page?(controller: 'developers', action: 'show', id: @developer.slug) %>
+    <% if @developer && controller_name == 'developers' && action_name == 'show' %>
       <%= link_to 'Udviklere', developers_path %>
       <i class='fa-solid fa-left-long px-2'></i>
       <span class='pointer'><%= @developer.name %></span>
-    <% elsif current_page?(controller: 'developers', action: 'index') %>
+    <% elsif controller_name == 'developers' && action_name == 'index' %>
       <span class='pointer'>Udviklere</span>
     <% end %>
   </div>

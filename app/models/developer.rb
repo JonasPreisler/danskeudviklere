@@ -10,12 +10,6 @@ class Developer < ApplicationRecord
 
   scope :visible, -> { where.not(search_status: 'invisible') }
 
-  $DEVELOPER_LANGUAGES = ['Ruby', 'Ruby on Rails', 'Java', 'JavaScript', 'PHP', 'Python', 'C#', 'C++']
-  $DEVELOPER_ROLE_TYPES = ['fulltime', 'parttime', 'remote', 'onsite']
-  $DEVELOPER_ROLE_LEVELS = ['junior', 'midlevel', 'senior']
-  $DEVELOPER_SEARCH_STATUSES = ['is_active', 'unavailable', 'invisible']
-  $DEVELOPER_COUNTRY_AREAS = ['København', 'Århus', 'Odense', 'Fyn', 'Nordjylland', 'Midtjylland', 'Sydjylland', 'Andet', 'Udlandet']
-
   extend FriendlyId
   friendly_id :name, use: :slugged
 

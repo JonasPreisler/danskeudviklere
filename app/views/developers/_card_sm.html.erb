@@ -1,4 +1,4 @@
-<div class="card border-0 shadow-sm h-100 position-relative overflow-hidden rounded-4">
+<div class="card border-0 shadow-sm h-75 position-relative overflow-hidden rounded-4">
   <div class="card-body">
     <%= link_to developer_path(developer) do %>
       <div class='d-flex'>
@@ -10,8 +10,7 @@
           <div><%= developer.name %></div>
           <div>
             <small class='tx-primary'>
-              <i class="fa-solid fa-location-dot"></i>
-              <%= developer.city %>
+              <%= developer.role_levels.join(', ').capitalize %>
             </small>
           </div>
           <% developer.programming_languages.each do |lang| %>
@@ -22,9 +21,13 @@
         </div>
       </div>
 
-      <div class='position-absolute top-0 end-0 pt-1 pe-2'>
-        <div class='<%= search_status_color_class(developer) %> tx-13'>
+      <div class='position-absolute top-0 end-0 pt-1 pe-2 tx-13'>
+        <div class='<%= search_status_color_class(developer, developer.search_status) %>'>
           <i class="fa-solid fa-circle-check"></i> <%= t "developers.search_statuses.#{developer.search_status}" %>
+        </div>
+        <div>
+          <i class="fa-solid fa-location-dot"></i>
+          <%= developer.city %>
         </div>
       </div>
 

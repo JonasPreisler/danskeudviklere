@@ -32,17 +32,23 @@
   </div>
   <hr>
   <div class='py-2'>
+    <div class='small-title mb-2'>LEVEL</div>
+    <% $DEVELOPER_ROLE_LEVELS.each do |level| %>
+      <div class='pb-2 <%= role_level_color_class(@developer, level) %>'>
+        <div class='pe-2 d-inline'>
+          <i class="<%= fa_circle_class_for_role_level(@developer, level) %> fa-circle-check"></i>
+        </div>
+        <%= t "developers.role_levels.#{level}" %>
+      </div>
+    <% end %>
+  </div>
+  <hr>
+  <div class='py-2'>
     <div class='small-title mb-2'>SØGESTATUS</div>
     <% $DEVELOPER_SEARCH_STATUSES.first(2).each do |status| %>
-      <div class='pb-2 <%= search_status_color_class(@developer) %>'>
+      <div class='pb-2 <%= search_status_color_class(@developer, status) %>'>
         <div class='pe-2 d-inline'>
-          <i class="
-            <% if @developer.search_status == status %>
-              fa-solid
-            <% else %>
-              fa-regular
-            <% end %>
-          fa-circle-check"></i>
+          <i class="<%= fa_circle_class_for_search_status(@developer, status) %> fa-circle-check"></i>
         </div>
         <%= t "developers.search_statuses.#{status}" %>
       </div>
@@ -50,7 +56,7 @@
   </div>
   <hr>
   <div class='py-2'>
-    <div class='small-title'>BY</div>
+    <div class='small-title'>OMRÅDE</div>
     <%= @developer.city %>
   </div>
   <hr>

@@ -1,7 +1,7 @@
-<div class='languages'>
+<div class='languages position-relative'>
   <div class='small-title pb-2'>STACK:</div>
   <input id="filter_lang" type="text" class='p-1 w-100 border-0 border-bottom mb-2' placeholder='<%= t 'developers.index.search.filter_lang' %>'>
-  <div class='reset float-end'><small class='text-light-gray pointer'>Nulstil</small></div>
+  <div class='reset position-absolute top-0 end-0'><small class='text-light-gray pointer'>Nulstil</small></div>
   <div class='overflow-auto'>
     <% $DEVELOPER_LANGUAGES.each do |lang| %>
       <div class='text-muted pb-2'>

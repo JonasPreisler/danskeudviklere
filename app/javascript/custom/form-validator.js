@@ -31,3 +31,14 @@ $(function() {
     }
   });
 });
+// require at least one role-type
+$(function() {
+  var requiredCheckboxes = $('.role-levels :checkbox[required]');
+  requiredCheckboxes.change(function(){
+    if(requiredCheckboxes.is(':checked')) {
+        requiredCheckboxes.removeAttr('required');
+    } else {
+        requiredCheckboxes.attr('required', 'required');
+    }
+  });
+});
