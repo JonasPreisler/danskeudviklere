@@ -27,6 +27,9 @@ da:
         updated_at: Opdateret
     models:
       user: Bruger
+      validations:
+        max_length_title: Titlen kan være max 42 karakterer
+        max_length_name: Navne kan være max 22 karakterer
     errors:
       models:
         account: 

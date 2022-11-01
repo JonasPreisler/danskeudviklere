@@ -12,7 +12,7 @@
       <div class='position-absolute w-100 h-100 p-4'>
         <div class='d-flex align-content-around flex-wrap h-100'>
           <div>
-            <h1 class='fw-bold tx-primary'>OPRET PROFIL</h1>
+            <h1 class='fw-bold tx-primary'>OPRET VIRKSOMHEDS PROFIL</h1>
           </div>
 
           <div class='text-muted fs-5'>
@@ -22,13 +22,13 @@
           </div>
 
           <div>
-            <%= link_to 'Ok, cool!', new_developer_path, class: 'btn btn-primary btn-lg shadow-sm' %>
+            <%= link_to 'Ok, kom i gang!', new_business_path, class: 'btn btn-primary btn-lg shadow-sm' %>
           </div>
         </div>
       </div>
     </div>
   </div>
 <% else %>
-  <%= render 'form', method: 'post', action: developers_path %>
+  <%= render 'form', method: 'post', action: businesses_path %>
 <% end %>
 

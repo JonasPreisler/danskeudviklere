@@ -7,6 +7,7 @@ Rails.application.routes.draw do
                             registrations: 'accounts/registrations',
                           }
     root to: "home#show"
+    resources :businesses, path: 'virksomhed'
     resources :developers, path: 'udviklere'
     resources :businesses, path: 'virksomhed'
   end

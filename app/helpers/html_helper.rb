@@ -15,5 +15,9 @@ module HtmlHelper
   def fa_circle_class_for_search_status(developer, status)
     developer.search_status == status ? 'fa-solid' : 'fa-regular'
   end
+
+  def business_logo(business)
+    business.logo.present? ? business.logo.url(:size_200px) : '/images/avatar.png'
+  end
   
 end

@@ -32,7 +32,7 @@
           <div class="row g-3">
             <div class="col">
               <label for='developer_first_name' class='text-muted'>Fornavn</label>
-              <%= f.text_field :first_name, class: 'form-control shadow-sm', required: true %>
+              <%= f.text_field :first_name, class: 'form-control shadow-sm', max: 22, required: true %>
               <div class="invalid-feedback">
                 Skriv fornavn
               </div>
@@ -42,7 +42,7 @@
             </div>
             <div class="col">
               <label for='developer_last_name' class='text-muted'>Efternavn</label>
-              <%= f.text_field :last_name, class: 'form-control shadow-sm', required: true %>
+              <%= f.text_field :last_name, class: 'form-control shadow-sm', max: 22, required: true %>
               <div class="invalid-feedback">
                 Skriv efternavn
               </div>
@@ -57,7 +57,7 @@
           <div class="row g-3">
             <div class="col">
               <label for='developer_title' class='text-muted'>Titel</label>
-              <%= f.text_field :title, class: 'form-control shadow-sm', required: true %>
+              <%= f.text_field :title, class: 'form-control shadow-sm', max: 42, required: true %>
               <div class="invalid-feedback">
                 Skriv titel
               </div>
@@ -87,7 +87,7 @@
           <label for='developer_about' class='text-muted'>Bio</label>
           <%= f.text_area :about, class: 'form-control shadow-sm', required: true %>
           <div class="invalid-feedback">
-            Skriv lidt om dig self
+            Skriv lidt om dig selv
           </div>
           <div class="valid-feedback">
             👍🏼

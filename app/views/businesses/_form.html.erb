@@ -1,0 +1,87 @@
+<% content_for :head do %>
+  <%= javascript_import_module_tag "custom/form-validator" %>
+<% end %>
+
+<%= form_with(model: @business, html: {novalidate: 'novalidate', class: 'needs-validation'}) do |f| %>
+  <% if @business.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@business.errors.count, "error") %> prohibited this developer from being saved:</h2>
+
+      <ul>
+        <% @business.errors.each do |error| %>
+          <li><%= @error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h1 class='pb-3'>Din virksomheds profil</h1>
+
+  <div class='bg-white rounded p-4 shadow-sm'>
+    <div class='row'>
+      <div class='col-md-3'>
+        <div class='fs-5 fw-semibold'>Profil</div>
+        <div class='text-muted'>Denne information vil vises offentligt, så gør dig umage med, hvad du deler.</div>
+      </div>
+      <div class='col-md-9'>
+        <div class='py-3'>
+          <div class="row g-3">
+            <div class="col">
+              <label for='business_name' class='text-muted'>Navn</label>
+              <%= f.text_field :name, class: 'form-control shadow-sm', required: true %>
+              <div class="invalid-feedback">
+                Skriv name
+              </div>
+              <div class="valid-feedback">
+                👍🏼
+              </div>
+            </div>
+            <div class="col">
+              <label for='business_website' class='text-muted'>Website</label>
+              <%= f.url_field :website, class: 'form-control shadow-sm' %>
+              <div class="invalid-feedback">
+                Skriv website
+              </div>
+              <div class="valid-feedback">
+                👍🏼
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class='py-3'>
+          <label for='business_about' class='text-muted'>Bio</label>
+          <%= f.text_area :about, class: 'form-control shadow-sm' %>
+          <div class="invalid-feedback">
+            Skriv lidt om din virksomhed
+          </div>
+          <div class="valid-feedback">
+            👍🏼
+          </div>
+        </div>
+
+        <div class='py-3'>
+          <div class="row g-3">
+            <div class="col-6">
+              <label for='business_profile_picture' class='text-muted'>Logo</label>
+              <%= f.file_field :logo, class: 'form-control shadow-sm', required: @image_required %>
+              <div class="invalid-feedback">
+                Upload dit logo for at være mere præsentabel overfor potentielle kandidater.
+              </div>
+              <div class="valid-feedback">
+                👍🏼
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='text-end pt-3'>
+    <%= f.submit "#{'Opret profil' if action_name == 'new'}#{'Opdater profil' if action_name == 'edit'}", class: 'btn btn-primary shadow-sm' %>
+  </div>
+
+<% end %>
+
+

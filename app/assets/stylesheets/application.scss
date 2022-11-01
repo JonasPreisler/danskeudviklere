@@ -185,8 +185,8 @@ nav .nav-item img {
   }
 }
 
-.developer-show {
-  .developer-details {
+.developer-show, .business-show {
+  .details {
     img {
       width: 30px;
       opacity: 25%;
@@ -311,6 +311,15 @@ nav .nav-item img {
   border: 1px solid #f3f2f2 !important;
 }
 
+
+*.dropdown-item:active, .dropdown-item:focus, .dropdown-item:active:focus, .dropdown-item.active:focus {
+  background-color: white !important;
+}
+
+.card {
+  height: 60%;
+}
+
 // ------------------------------------------------
 
 
@@ -368,7 +377,3 @@ margin-bottom:10px;
 
 // ------------------------------------------------
 
-
-*.dropdown-item:active, .dropdown-item:focus, .dropdown-item:active:focus, .dropdown-item.active:focus {
-  background-color: white !important;
-}

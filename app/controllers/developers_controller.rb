@@ -18,11 +18,11 @@ class DevelopersController < ApplicationController
 
   def new
     @developer = Developer.new
-    @image_required = !@developer.profile_picture.present?
   end
 
   def edit
     @developer = current_account.developer
+    @image_required = !@developer.profile_picture.present?
   end
 
   def create
