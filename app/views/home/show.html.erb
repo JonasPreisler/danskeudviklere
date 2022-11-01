@@ -5,11 +5,12 @@
 <div id='home'>
   <%= render 'components/header' %>
 
+  <h2>De seneste udviklere</h2>
 
   <div class='row'>
     <% @developers.each do |developer| %>
       <div class='col-md-6 py-3'>
-        <%= render 'developers/show', developer: developer %>
+        <%= render 'developers/card_sm', developer: developer %>
       </div>
     <% end %>
   </div>

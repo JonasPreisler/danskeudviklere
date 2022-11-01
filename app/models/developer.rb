@@ -8,9 +8,13 @@ class Developer < ApplicationRecord
 
   mount_uploader :profile_picture, ProfilePictureUploader
 
+  scope :visible, -> { where.not(search_status: 'invisible') }
+
   $DEVELOPER_LANGUAGES = ['Ruby', 'Ruby on Rails', 'Java', 'JavaScript', 'PHP', 'Python', 'C#', 'C++']
   $DEVELOPER_ROLE_TYPES = ['fulltime', 'parttime', 'remote', 'onsite']
+  $DEVELOPER_ROLE_LEVELS = ['junior', 'midlevel', 'senior']
   $DEVELOPER_SEARCH_STATUSES = ['is_active', 'unavailable', 'invisible']
+  $DEVELOPER_COUNTRY_AREAS = ['København', 'Århus', 'Odense', 'Fyn', 'Nordjylland', 'Midtjylland', 'Sydjylland', 'Andet', 'Udlandet']
 
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -19,8 +23,19 @@ class Developer < ApplicationRecord
     first_name.present? ? "#{first_name.capitalize} #{last_name.capitalize}" : ''
   end
 
-  def zip
-    city.first(4)
+  ##################### FOR SEARCH #####################
+
+  scope :programming_languages, -> (programming_languages) { where("'#{programming_languages}' = ANY (programming_languages)") }
+  scope :city, -> (city) { where(city: city) }
+
+  def self.filter(filter_params)
+    results = where(nil)
+    filter_params.each do |key, value|
+      results = results.public_send(key, value) if value.present?
+    end
+    results
   end
+  
+  ##################### END OF FOR SEARCH #####################
 
 end

@@ -4,10 +4,16 @@ class DevelopersController < ApplicationController
   before_action :redirect_if_account_already_has_a_developer, only: %i[new]
 
   def index
-    @developers = Developer.all
+    @developers = if params[:search].present?
+                    Search.create_new(params[:search])
+                    Search.results(params[:search])
+                  else
+                    Developer.visible
+                  end
   end
 
   def show
+    redirect_to developers_path, notice: t('developers.redirects.invisible') if @developer.invisible?
   end
 
   def new

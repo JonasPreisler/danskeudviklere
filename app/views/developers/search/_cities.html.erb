@@ -1,0 +1,11 @@
+<div class='cities'>
+  <div class='reset float-end'><small class='text-light-gray pointer'>Nulstil</small></div>
+  <div class='small-title pb-2'>OMRÅDE:</div>
+  <% $DEVELOPER_COUNTRY_AREAS.each do |city| %>
+    <div class='text-muted nowrap pb-2'>
+      <input type='radio' name='search[city]' id='search_city_<%= city %>' class='pointer' value='<%= city %>'>
+      <label for='search_city_<%= city %>' class='pointer'><%= city %> </label>
+    </div>
+  <% end %>
+</div>
+

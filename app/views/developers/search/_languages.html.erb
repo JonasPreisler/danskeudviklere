@@ -1,0 +1,14 @@
+<div class='languages'>
+  <div class='small-title pb-2'>STACK:</div>
+  <input id="filter_lang" type="text" class='p-1 w-100 border-0 border-bottom mb-2' placeholder='<%= t 'developers.index.search.filter_lang' %>'>
+  <div class='reset float-end'><small class='text-light-gray pointer'>Nulstil</small></div>
+  <div class='overflow-auto'>
+    <% $DEVELOPER_LANGUAGES.each do |lang| %>
+      <div class='text-muted pb-2'>
+        <input type='radio' name='search[programming_languages]' id='search_lang_<%= lang %>' class='pointer' value='<%= lang %>'>
+        <label for='search_lang_<%= lang %>' class='pointer'><%= lang %></label>
+      </div>
+    <% end %>
+  </div>
+</div>
+

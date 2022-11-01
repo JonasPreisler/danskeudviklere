@@ -166,3 +166,10 @@ da:
       is_active: Aktivt søgende
       unavailable: Ikke ledig
       invisible: Usynlig
+    redirects:
+      invisible: 'Udvikler er ikke aktiv'
+    index:
+      search:
+        filter_lang: 'Søg...'
+        filter_cities: 'Søg postnummer...'
+        no_results: 'Ingen resultater'

@@ -1,6 +1,6 @@
-
 <% content_for :head do %>
   <%= javascript_import_module_tag "custom/form-validator" %>
+  <%= javascript_import_module_tag "custom/select2" %>
 <% end %>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -69,8 +69,8 @@
               <label for="developer_city" class="text-muted">Postnummer</label>
               <select name='developer[city]' id="developer_city" class='form-control select2' required>
                 <option selected='selected'>Vælg by</option>
-                <%= zip_codes.each do |zip| %>
-                  <option value='<%= zip[0] %> <%= zip[1] %>' <%= 'selected' if "#{zip[0]} #{zip[1]}" == @developer.city %>><%= zip[0] %> <%= zip[1] %></option>
+                <%= $DEVELOPER_COUNTRY_AREAS.each do |area| %>
+                  <option value='<%= area %>' <%= 'selected' if area == @developer.city %>><%= area %></option>
                 <% end %>
               </select>
               <div class="invalid-feedback">

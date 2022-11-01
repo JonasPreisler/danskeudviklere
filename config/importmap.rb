@@ -8,3 +8,5 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 
 pin 'custom/bg-animation'
 pin 'custom/form-validator'
+pin 'custom/select2'
+pin 'custom/search'

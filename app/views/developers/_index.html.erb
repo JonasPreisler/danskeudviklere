@@ -1,0 +1,11 @@
+<% if @developers.any? %>
+  <% @developers.each do |developer| %>
+    <div class='col-md-6 col-sm-12 py-2'>
+      <%= render 'card_sm', developer: developer %>
+    </div>
+  <% end %>
+<% else %>
+  <div class='pt-5 fs-5'>
+    <%= t 'developers.index.search.no_results' %>...
+  </div>
+<% end %>

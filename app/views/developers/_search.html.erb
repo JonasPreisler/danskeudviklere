@@ -1,0 +1,16 @@
+<div class='bg-white rounded shadow-sm p-3 h-100' id='search'>
+
+  <%= form_tag developers_path, id: 'search', method: 'get', remote: true do |f| %>
+
+    <div class='row'>
+      <div class='col-6 col-sm-12 py-md-2'>
+        <%= render 'developers/search/languages' %>
+      </div>
+      <div class='col-6 col-sm-12 py-md-2'>
+        <%= render 'developers/search/cities' %>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+

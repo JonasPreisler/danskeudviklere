@@ -19,13 +19,11 @@ $(document).ready(function () {
 
 
 
-$('.select2').select2({
-  "language": {
-      "noResults": function(){
-       return "Ingen resultater";
-      }
-  },
-   escapeMarkup: function (markup) {
-       return markup;
-   }
- });
+
+ $(function() {
+  AOS.init();
+});
+
+$(window).on('load', function() {
+  AOS.refresh();
+});

@@ -34,13 +34,7 @@
   <div class='py-2'>
     <div class='small-title mb-2'>SØGESTATUS</div>
     <% $DEVELOPER_SEARCH_STATUSES.first(2).each do |status| %>
-      <div class='pb-2 
-        <% if @developer.search_status == status %>
-          tx-primary
-        <% else %>
-          opacity-25
-        <% end %>
-      '>
+      <div class='pb-2 <%= search_status_color_class(@developer) %>'>
         <div class='pe-2 d-inline'>
           <i class="
             <% if @developer.search_status == status %>

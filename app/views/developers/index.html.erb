@@ -1,14 +1,15 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :head do %>
+  <%= javascript_import_module_tag "custom/search" %>
+<% end %>
 
-<h1>Danske udviklere</h1>
 
-<div id="developers">
-  <% @developers.each do |developer| %>
-    <%= render developer %>
-    <p>
-      <%= link_to "Show this developer", developer %>
-    </p>
-  <% end %>
+<div class='row'>
+  <div class='col-sm-3'>
+    <%= render 'search' %>
+  </div>
+  <div class='col-sm-9'>
+    <div class='row' id='results'>
+      <%= render 'index' %>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New developer", new_developer_path %>
