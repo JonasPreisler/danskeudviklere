@@ -8,7 +8,7 @@ class Developer < ApplicationRecord
   mount_uploader :profile_picture, ProfilePictureUploader
 
   validates_presence_of :first_name, :last_name, :title, :about, :city, :search_status
-  validates_length_of :title, maximum: 42, with_message: I18n.t('activerecord.models.validations.max_length_title')
+  validates_length_of :title, maximum: 60, with_message: I18n.t('activerecord.models.validations.max_length_title')
   validates_length_of :first_name, :last_name, maximum: 22, with_message: I18n.t('activerecord.models.validations.max_length_name')
   # validates :first_name, :last_name, length: { maximum: 22 }
   validate :can_not_have_custom_city
@@ -32,7 +32,7 @@ class Developer < ApplicationRecord
     filter_params.each do |key, value|
       results = results.public_send(key, value) if value.present?
     end
-    results
+    results.paginate(page: params[:page], per_page: 10)
   end
   
   ##################### END OF FOR SEARCH #####################

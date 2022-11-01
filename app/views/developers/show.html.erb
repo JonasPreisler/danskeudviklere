@@ -2,7 +2,7 @@
   <div class="p-3 p-sm-5 mb-4 bg-light rounded-3 mb-4 bg-light rounded-3 shadow-sm position-relative bg-pattern-circuit">
     <div class="container-fluid py-5">
       <%= link_to 'Rediger', edit_developer_path(@developer), class: 'btn btn-outline-secondary bg-white position-absolute top-0 end-0 mt-3 me-3' if account_signed_in? && @current_developer && @current_developer == @developer %>
-      <%= image_tag @developer.profile_picture.url(:size_200px), class: 'rounded-circle position-absolute shadow-sm profile-picture' %>
+      <%= image_tag developer_pic(@developer, 200), class: 'rounded-circle position-absolute shadow-sm profile-picture' %>
     </div>
   </div>
   <div class='row'>

@@ -18,7 +18,7 @@ RSpec.describe Developer, type: :model do
     it { should validate_presence_of(:city) }
     it { should validate_length_of(:first_name).is_at_most(22) }
     it { should validate_length_of(:last_name).is_at_most(22) }
-    it { should validate_length_of(:title).is_at_most(42) }
+    it { should validate_length_of(:title).is_at_most(60) }
 
     it 'can only create a city of the constant options' do
       account = Account.create(email: 'test@gmail.com', password: 'testtest')

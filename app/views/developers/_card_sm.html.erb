@@ -3,7 +3,7 @@
     <%= link_to developer_path(developer) do %>
       <div class='d-flex'>
         <div class="flex-shrink-0">
-          <%= image_tag developer.profile_picture.url(:size_40px), class: 'rounded-4 shadow-sm' %>
+          <%= image_tag developer_pic(developer, 40), class: 'rounded-4 shadow-sm' %>
         </div>
         <div class="flex-grow-1 ms-3">
           <h5 class="card-title tx-primary_brighter"><%= developer.title %></h5>

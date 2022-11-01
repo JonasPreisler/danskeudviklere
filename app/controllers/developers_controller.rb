@@ -8,7 +8,7 @@ class DevelopersController < ApplicationController
                     Search.create_new(params[:search])
                     Search.results(params[:search])
                   else
-                    Developer.visible
+                    Developer.visible.paginate(page: params[:page], per_page: 10)
                   end
   end
 

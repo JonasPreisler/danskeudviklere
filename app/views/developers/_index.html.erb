@@ -1,6 +1,7 @@
 <% if @developers.any? %>
   <% @developers.each do |developer| %>
-    <div class='col-md-6 col-sm-12 py-2'>
+    <div class='pb-3'>
+    <%# <div class='col-md-6 col-sm-12 py-2'> %>
       <%= render 'card_sm', developer: developer %>
     </div>
   <% end %>

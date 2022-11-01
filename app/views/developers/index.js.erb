@@ -1,3 +1,22 @@
 $('#results').html('<%= j render 'developers/index' %>');
 
 AOS.refresh();
+
+<% if @referrer == 'scroll' %>
+
+  $('#results').append('<%= j render @expeditions_paginated %>');
+
+  $('.spinner-border').closest('center').remove();
+
+  <% if @expeditions_paginated.next_page %>
+
+    $('.pagination').replaceWith('<%= j will_paginate(@expeditions_paginated) %>');
+  <% else %>
+
+    $('.pagination').remove();
+
+  <% end %>
+
+  <% sleep 1 %>
+
+<% end %>
