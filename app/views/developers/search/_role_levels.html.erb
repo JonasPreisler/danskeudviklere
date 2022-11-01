@@ -1,0 +1,13 @@
+<div class='search-box py-3 border-top'>
+  <div class='reset float-end'><small class='text-light-gray pointer'>Nulstil</small></div>
+  <div class='small-title pb-2'>LEVEL:</div>
+  <div class='overflow-auto'>
+    <% $DEVELOPER_ROLE_LEVELS.each do |level| %>
+      <div class='text-muted pb-2'>
+        <input type='radio' name='search[role_levels]' id='search_role_level_<%= level %>' class='pointer' value='<%= level %>'>
+        <label for='search_role_level_<%= level %>' class='pointer'><%= level.capitalize %></label>
+      </div>
+    <% end %>
+  </div>
+</div>
+

@@ -1,10 +1,16 @@
-<div class='bg-white rounded shadow-sm p-3 h-100' id='search'>
 
-  <%= form_tag developers_path, id: 'search', method: 'get', remote: true do |f| %>
+  <button class='btn btn-sm bg-light show-on-mobile w-100 shadow-sm border-light p-2 mb-3' id='viev_search'><i class="fa-solid fa-magnifying-glass"></i> <span>Søg</span></button>
+<div class='bg-white rounded shadow-sm p-3 h-100'>
+  
+
+  <%= form_tag developers_path, id: 'search', class: 'hide-on-mobile', method: 'get', remote: true do |f| %>
 
     <div class='row'>
-      <div class='col-6 col-sm-12 py-md-2'>
+      <div class='col-12 col-sm-12 py-md-2'>
         <%= render 'developers/search/languages' %>
+      </div>
+      <div class='col-6 col-sm-12 py-md-2'>
+        <%= render 'developers/search/role_levels' %>
       </div>
       <div class='col-6 col-sm-12 py-md-2'>
         <%= render 'developers/search/cities' %>
@@ -14,3 +20,15 @@
 
 </div>
 
+<script>
+
+  $(document).on('click', '#viev_search', function() {
+    $('#search').toggleClass('hide-on-mobile');
+    if($('#search').hasClass('hide-on-mobile')) {
+      $(this).find('span').text('Søg'); 
+    } else {
+      $(this).find('span').text('Skjul søg'); 
+    }
+  })
+
+</script>

@@ -22,11 +22,11 @@ $(document).on('change', '#search input', function() {
 
 
 $(document).on('click', '#search .reset', function() {
-  var checked_input = $(this).closest('.rounded').find('input[type=radio]:checked');
-  var input = $(this).closest('.rounded').find('input[type=text]');
+  var checked_input = $(this).closest('.search-box').find('input[type=radio]:checked');
+  var input = $(this).closest('.search-box').find('input[type=text]');
   checked_input.prop('checked', false);
   input.val('');
-  var input = $(this).closest('.rounded').find('.overflow-auto div').each(function() {$(this).show()});
+  var input = $(this).closest('.search-box').find('.overflow-auto div').each(function() {$(this).show()});
   const form = $(this).closest('form');
   form.submit();
 })

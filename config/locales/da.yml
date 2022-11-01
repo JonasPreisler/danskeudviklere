@@ -179,7 +179,7 @@ da:
     index:
       search:
         filter_lang: 'Søg...'
-        filter_cities: 'Søg postnummer...'
+        role_levels: 'Søg...'
         no_results: 'Ingen resultater'
 
 

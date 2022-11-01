@@ -10,7 +10,7 @@
           <div><%= developer.name %></div>
           <div>
             <small class='tx-primary'>
-              <%= developer.role_levels.join(', ').capitalize %>
+              <%= developer.role_levels.join(', ').titleize %>
             </small>
           </div>
           <% developer.programming_languages.each do |lang| %>

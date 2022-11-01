@@ -21,6 +21,7 @@ class Developer < ApplicationRecord
 
   scope :programming_languages, -> (programming_languages) { where("'#{programming_languages}' = ANY (programming_languages)") }
   scope :city, -> (city) { where(city: city) }
+  scope :role_levels, -> (role_levels) { where("'#{role_levels}' = ANY (role_levels)") }
 
   def self.filter(filter_params)
     results = where(nil)
