@@ -13,11 +13,13 @@
               <%= developer.role_levels.join(', ').titleize %>
             </small>
           </div>
-          <% developer.programming_languages.each do |lang| %>
-            <%= link_to developers_path(language: lang) do %>
-              <small class='tx-complementary_brighter bg-complementary_ultra_brighter rounded px-1 me-1 tag'><span class='opacity-50'>#</span> <%= lang %></small>
+          <div>
+            <% developer.programming_languages.max(8).each do |lang| %>
+              <%= link_to developers_path(language: lang), class: 'd-inline-block' do %>
+                <small class='tx-complementary_brighter bg-complementary_ultra_brighter rounded px-1 me-1 tag'><span class='opacity-50'>#</span> <%= lang %></small>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
 

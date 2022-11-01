@@ -316,8 +316,8 @@ nav .nav-item img {
   background-color: white !important;
 }
 
-.card {
-  height: 60%;
+.card .card-body {
+  max-height: 160px;
 }
 
 // ------------------------------------------------
