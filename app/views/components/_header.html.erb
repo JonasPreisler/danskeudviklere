@@ -1,8 +1,10 @@
-<div class="p-3 p-sm-5 mb-4 bg-light rounded-3 mb-4 bg-light rounded-3 shadow-sm position-relative">
+<header class="p-3 p-sm-5 mb-4 bg-light rounded-3 mb-4 bg-light rounded-3 shadow-sm position-relative">
   <canvas id="canvas" class='position-absolute w-100 h-100 start-0'></canvas>
   <div class="container-fluid py-5">
     <h1 class="display-5 fw-bold"><%= Developer.all.size %> danske udviklere</h1>
     <p class="col-md-8 fs-4">Søg i <%= $DEVELOPER_ROLE_TYPES.size %> programmerings sprog og chat med matchende kandidater.</p>
     <a href='<%= developers_path %>' class="btn btn-primary btn-lg">Søg i listen</a>
   </div>
-</div>
+  <img src='/images/coder.svg' class='w-25 position-absolute end-0 top-50 translate-middle d-none d-md-block'>
+  <%# <img src='/images/coder.svg' class='w-25 position-absolute top-50 end-0 translate-middle-y d-none d-md-block'> %>
+</header>

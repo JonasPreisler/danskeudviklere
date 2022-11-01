@@ -2,7 +2,7 @@ class Developer < ApplicationRecord
   belongs_to :account
   has_many :projects
   has_many :tools, through: :projects
-  validates_presence_of :first_name, :last_name, :title, :about, :role_types, :search_status
+  validates_presence_of :first_name, :last_name, :title, :about, :city, :search_status
 
   enum search_status: [:is_active, :unavailable, :invisible]
 

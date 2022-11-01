@@ -81,7 +81,6 @@ RSpec.configure do |config|
 
   ######################### END OF DEVISE #########################
 
-  
 end
 
 Shoulda::Matchers.configure do |config|

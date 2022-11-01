@@ -1,4 +1,8 @@
 
+<% content_for :head do %>
+  <%= javascript_import_module_tag "custom/form-validator" %>
+<% end %>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -94,7 +98,7 @@
           <div class="row g-3">
             <div class="col-6">
               <label for='developer_profile_picture' class='text-muted'>Profil billede</label>
-              <%= f.file_field :profile_picture, class: 'form-control shadow-sm' %>
+              <%= f.file_field :profile_picture, class: 'form-control shadow-sm', required: @image_required %>
               <div class="invalid-feedback">
                 Velg et profil billede. Dette øger dine chancer for at blive kontaktet.
               </div>
@@ -104,7 +108,7 @@
             </div>
             <div class='col-6'>
               <label for="developer_programming_languages" class="text-muted nowrap">Sprog/frameworks</label>
-              <select name='[developer]programming_languages[]' multiple='multiple' id="developer_programming_languages" class='form-control select2 w-100' required>
+              <select name='developer[programming_languages][]' multiple='multiple' id="developer_programming_languages" class='form-control select2 w-100' required>
                 <%= $DEVELOPER_LANGUAGES.sort.each do |language| %>
                   <option value='<%= language %>' <%= 'selected' if @developer.programming_languages && @developer.programming_languages.include?(language) %>><%= language %></option>
                 <% end %>
@@ -142,7 +146,7 @@
           <% end %>
         </div>
 
-        <div class='py-3'>
+        <div class='py-3 role-types'>
           <div class='fs-5 pb-3'>Hvilken type(r) søger du?</div>
           <% $DEVELOPER_ROLE_TYPES.each do |role| %>
             <div class="form-check py-2">
@@ -205,41 +209,3 @@
 <% end %>
 
 
-
-<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(() => {
-  'use strict'
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  const forms = document.querySelectorAll('.needs-validation')
-
-  // Loop over them and prevent submission
-  Array.from(forms).forEach(form => {
-    form.addEventListener('submit', event => {
-      if (!form.checkValidity()) {
-        event.preventDefault()
-        event.stopPropagation()
-      }
-
-      form.classList.add('was-validated')
-    }, false)
-  })
-})()
-</script>
-<%= @developer.programming_languages %>
-
-<script>
-  $('.select2').select2({
-   "language": {
-       "noResults": function(){
-        return "Ingen resultater";
-       }
-   },
-    escapeMarkup: function (markup) {
-        return markup;
-    }
-  });
-
-
-</script>

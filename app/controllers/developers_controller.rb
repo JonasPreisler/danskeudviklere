@@ -12,6 +12,7 @@ class DevelopersController < ApplicationController
 
   def new
     @developer = Developer.new
+    @image_required = !@developer.profile_picture.present?
   end
 
   def edit

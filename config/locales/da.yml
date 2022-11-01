@@ -164,5 +164,5 @@ da:
       Onsite: Kontor
     search_statuses:
       is_active: Aktivt søgende
-      unavaiable: Ikke ledig
+      unavailable: Ikke ledig
       invisible: Usynlig
