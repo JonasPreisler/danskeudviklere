@@ -2,7 +2,7 @@ class Developer < ApplicationRecord
   belongs_to :account
   has_many :projects
   has_many :tools, through: :projects
-  paginates_per 10
+  paginates_per 5
   extend FriendlyId
   friendly_id :name, use: :slugged
   mount_uploader :profile_picture, ProfilePictureUploader

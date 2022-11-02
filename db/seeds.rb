@@ -1,6 +1,6 @@
 
 
-100.times do |index|
+140.times do |index|
   account = Account.create(email: "test#{index+1}@gmail.com", password: 'testtest')
   Developer.create(
                     first_name: "firstname_#{index+1}",
@@ -12,7 +12,7 @@
                     role_levels: [$DEVELOPER_ROLE_LEVELS.shuffle.first],
                     role_types: $DEVELOPER_ROLE_TYPES.shuffle.first(2),
                     programming_languages: $DEVELOPER_LANGUAGES.shuffle.first(2),
-                    profile_picture: File.open(Dir['app/public/images/avatars/*.jpg'].sample)
+                    # profile_picture: File.open(Dir['public/images/avatars/*.jpg'].sample)
                   )
 end
 

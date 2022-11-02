@@ -6,7 +6,7 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Du
+module DanskeUdviklere
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
@@ -25,6 +25,7 @@ module Du
     config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
     config.i18n.default_locale = :'da'
+    config.exceptions_app = self.routes
 
     config.time_zone =  if Rails.env.development?
                           'Beijing'
