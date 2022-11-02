@@ -1,10 +1,14 @@
 <% if @developers.any? %>
+  <div class='text-end py-1'>
+    <%= @developers_size %> resultater
+  </div>
   <% @developers.each do |developer| %>
     <div class='pb-3'>
     <%# <div class='col-md-6 col-sm-12 py-2'> %>
       <%= render 'card_sm', developer: developer %>
     </div>
   <% end %>
+  <%= paginate @developers %>
 <% else %>
   <div class='pt-5 fs-5 mt-5 mt-sm-0'>
     <%= t 'developers.index.search.no_results' %>...

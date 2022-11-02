@@ -1,35 +1,38 @@
 <div class="card border-0 shadow-sm position-relative overflow-hidden rounded-4">
   <div class="card-body">
     <%= link_to developer_path(developer) do %>
-      <div class='d-flex'>
-        <div class="flex-shrink-0">
-          <%= image_tag developer_pic(developer, 40), class: 'rounded-4 shadow-sm' %>
-        </div>
-        <div class="flex-grow-1 ms-3">
-          <h5 class="card-title tx-primary_brighter"><%= developer.title %></h5>
-          <div><%= developer.name %></div>
-          <div>
-            <small class='tx-primary'>
-              <%= developer.role_levels.join(', ').titleize %>
-            </small>
-          </div>
-          <div>
-            <% developer.programming_languages.max(8).each do |lang| %>
-              <%= link_to developers_path(language: lang), class: 'd-inline-block' do %>
-                <small class='tx-complementary_brighter bg-complementary_ultra_brighter rounded px-1 me-1 tag'><span class='opacity-50'>#</span> <%= lang %></small>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-
-      <div class='position-absolute top-0 end-0 pt-1 pe-2 tx-13'>
+      
+      
+      <div class='float-sm-end tx-13 status'>
         <div class='<%= search_status_color_class(developer, developer.search_status) %>'>
           <i class="fa-solid fa-circle-check"></i> <%= t "developers.search_statuses.#{developer.search_status}" %>
         </div>
         <div class='text-secondary'>
           <i class="fa-solid fa-location-dot"></i>
           <%= developer.city %>
+        </div>
+      </div>
+
+      
+      <div class='d-flex'>
+        <div class="flex-shrink-0">
+          <%= image_tag developer_pic(developer, 40), class: 'rounded-4 shadow-sm' %>
+        </div>
+        <div class="flex-grow-1 ms-3">
+          <h5 class="card-title tx-primary_brighter two-lines"><%= developer.title %></h5>
+          <div class='nowrap text-truncate'><%= developer.name %></div>
+          <div>
+            <small class='tx-primary'>
+              <%= developer.role_levels.join(', ').titleize %>
+            </small>
+          </div>
+          <div class='pt-1'>
+            <% developer.programming_languages.max(8).each do |lang| %>
+              <%= link_to developers_path(language: lang), class: 'd-inline-block' do %>
+                <small class='tx-complementary_brighter bg-complementary_ultra_brighter rounded px-1 me-1 tag'><span class='opacity-50'>#</span> <%= lang %></small>
+              <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
 

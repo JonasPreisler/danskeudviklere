@@ -1,9 +1,62 @@
 
-
 <div id='home'>
   <%= render 'components/header' %>
 
-  <h2>Seneste udviklere</h2>
+  <div class='row lang-icons text-center'>
+    <div class='col-md-2 col-6 p-3'>
+      <div class='py-4 tx-primary rounded shadow-sm'>
+        <i class="fa-brands fa-vuejs"></i>
+      </div>
+    </div>
+    <div class='col-md-2 col-6 p-3'>
+      <div class='py-4 tx-primary rounded shadow-sm'>
+        <i class="fa-brands fa-react"></i>
+      </div>
+    </div>
+    <div class='col-md-2 col-6 p-3'>
+      <div class='py-4 tx-primary rounded shadow-sm'>
+        <i class="fa-brands fa-css3-alt"></i>
+      </div>
+    </div>
+    <div class='col-md-2 col-6 p-3'>
+      <div class='py-4 tx-primary rounded shadow-sm'>
+        <i class="fa-brands fa-python"></i>
+      </div>
+    </div>
+    <div class='col-md-2 col-6 p-3'>
+      <div class='py-4 tx-primary rounded shadow-sm'>
+        <i class="fa-brands fa-js"></i>
+      </div>
+    </div>
+    <div class='col-md-2 col-6 p-3'>
+      <div class='py-4 tx-primary rounded shadow-sm'>
+        <i class="fa-brands fa-php"></i>
+      </div>
+    </div>
+    <div class='col-md-2 col-6 p-3'>
+      <div class='py-4 tx-primary rounded shadow-sm'>
+        <i class="fa-brands fa-java"></i>
+      </div>
+    </div>
+    <div class='col-md-2 col-6 p-3'>
+      <div class='py-4 tx-primary rounded shadow-sm'>
+        <i class="fa-brands fa-golang"></i>
+      </div>
+    </div>
+    <div class='col-md-2 col-6 p-3'>
+      <div class='py-4 tx-primary rounded shadow-sm'>
+        <i class="fa-brands fa-rust"></i>
+      </div>
+    </div>
+    <div class='col-md-2 col-6 p-3'>
+      <div class='py-4 tx-primary rounded shadow-sm'>
+        <i class="fa-brands fa-swift"></i>
+      </div>
+    </div>
+  </div>
+
+  <h2>Nye udviklere</h2>
+
 
   <div class='row'>
     <% @developers.each do |developer| %>
@@ -12,6 +65,9 @@
       </div>
     <% end %>
   </div>
-</div>
 
+  <div class='text-center pt-4'>
+    <%= link_to 'Se flere...', developers_path, class: 'btn btn-lg bg-white shadow-sm py-3 px-5 fs-3' %>
+  </div>
+</div>
 

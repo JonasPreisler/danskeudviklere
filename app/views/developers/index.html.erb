@@ -8,47 +8,9 @@
     <%= render 'search' %>
   </div>
   <div class='col-sm-9'>
-    <div id='results' class='overflow-auto'>
+    <div id='results'>
       <%= render 'index' %>
     </div>
   </div>
 </div>
 
-
-
-<script>
-
-
-  $(function() {
-
-
-    $(window).on('scroll', function() {
-
-      if ($('.pagination a[rel=next]').length && $('.pagination a:last-child:not(:disabled)')) {
-
-        if(!window.location.search.substring(1)) {
-          var url_params = 'hhh';
-        } else {
-          var url_params = 'window.location.search.substring(1)';
-        }
-
-        var link = $('.pagination a[rel=next]').attr('href') + '&referrer=scroll';
-
-        if (!$('#results .spinner-border').length && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
-
-          $('#results').append(
-                                      '<center>'+
-                                        '<div class="spinner-border" role="status">'+
-                                          '<span class="sr-only">Loading...</span>'+
-                                        '</div>'+
-                                      '</center>'
-                                    );
-          return $.getScript(link);
-        }
-      }
-    });
-    return $(window).scroll();
-  });
-
-
-</script>

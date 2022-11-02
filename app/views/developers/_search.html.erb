@@ -1,5 +1,5 @@
 
-  <button class='btn btn-sm bg-light show-on-mobile w-100 shadow-sm border-light p-2 mb-3' id='viev_search'><i class="fa-solid fa-magnifying-glass"></i> <span>Søg</span></button>
+<button class='btn btn-sm bg-light show-on-mobile w-100 shadow-sm border-light p-2 mb-3' id='viev_search'><i class="fa-solid fa-magnifying-glass"></i> <span>Filtrér</span></button>
 <div class='bg-white rounded shadow-sm p-3 h-100'>
   
 
@@ -25,9 +25,9 @@
   $(document).on('click', '#viev_search', function() {
     $('#search').toggleClass('hide-on-mobile');
     if($('#search').hasClass('hide-on-mobile')) {
-      $(this).find('span').text('Søg'); 
+      $(this).find('span').text('Filtrér'); 
     } else {
-      $(this).find('span').text('Skjul søg'); 
+      $(this).find('span').text('Skjul filtrering'); 
     }
   })
 

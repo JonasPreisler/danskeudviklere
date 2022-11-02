@@ -2,7 +2,7 @@ module HtmlHelper
 
 
   def role_types_color_class(developer, role)
-    developer.role_types == role ? 'tx-primary' : 'opacity-25'
+    developer.role_types.include?(role) ? 'tx-primary' : 'opacity-25'
   end
   def fa_circle_class_for_role_types(developer, role)
     (developer.role_types && developer.role_types.include?(role)) ? 'fa-solid' : 'fa-regular'

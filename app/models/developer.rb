@@ -2,7 +2,7 @@ class Developer < ApplicationRecord
   belongs_to :account
   has_many :projects
   has_many :tools, through: :projects
-
+  paginates_per 10
   extend FriendlyId
   friendly_id :name, use: :slugged
   mount_uploader :profile_picture, ProfilePictureUploader
@@ -32,7 +32,7 @@ class Developer < ApplicationRecord
     filter_params.each do |key, value|
       results = results.public_send(key, value) if value.present?
     end
-    results.paginate(page: params[:page], per_page: 10)
+    results
   end
   
   ##################### END OF FOR SEARCH #####################

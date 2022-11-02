@@ -47,35 +47,36 @@
     <div class='small-title'>OMRÅDE</div>
     <%= @developer.city %>
   </div>
-  <hr>
-  <div class='small-title'>LINKS</div>
-  <% if @developer.website.present? %>
-    <div class='py-2'>
-      <div class='row'>
-        <div class='col-2'>
-          <%= image_tag '/images/website.png' %>
-        </div>
-        <div class='col-10 text-truncate'>
-          <%= link_to @developer.website, target: :blank do %>
-            <%= @developer.website.gsub('https://', '') %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-  <% if @developer.github.present? %>
-    <div class='py-2'>
-      <div class='row'>
-        <div class='col-2'>
-          <%= image_tag '/images/github.png' %>
-        </div>
-        <div class='col-10 text-truncate'>
-          <%= link_to @developer.github, target: :blank do %>
-            <%= @developer.github.gsub('https://', '') %>
-          <% end %>
+  <% if @developer.website || @developer.github %>
+    <hr>
+    <div class='small-title'>LINKS</div>
+    <% if @developer.website %>
+      <div class='py-2'>
+        <div class='row'>
+          <div class='col-2'>
+            <%= image_tag '/images/website.png' %>
+          </div>
+          <div class='col-10 text-truncate'>
+            <%= link_to @developer.website, target: :blank do %>
+              <%= @developer.website.gsub('https://', '') %>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
+    <% if @developer.github %>
+      <div class='py-2'>
+        <div class='row'>
+          <div class='col-2'>
+            <%= image_tag '/images/github.png' %>
+          </div>
+          <div class='col-10 text-truncate'>
+            <%= link_to @developer.github, target: :blank do %>
+              <%= @developer.github.gsub('https://', '') %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-
 </div>

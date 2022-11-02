@@ -4,12 +4,15 @@ class DevelopersController < ApplicationController
   before_action :redirect_if_account_already_has_a_developer, only: %i[new]
 
   def index
-    @developers = if params[:search].present?
-                    Search.create_new(params[:search])
-                    Search.results(params[:search])
-                  else
-                    Developer.visible.paginate(page: params[:page], per_page: 10)
-                  end
+    if params[:search].present?
+      Search.create_new(params[:search])
+      @developers = Search.results(params[:search]).page params[:page]
+      @developers_size = Search.results(params[:search]).size
+    else
+      @developers_size = Developer.visible.size
+      @developers = Developer.visible.page params[:page]
+    end
+    
   end
 
   def show

@@ -81,4 +81,4 @@ gem 'carrierwave', '~> 2.0'
 gem "rmagick"
 
 gem 'friendly_id'
-gem 'will_paginate', '~> 3.1.0'
+gem 'kaminari'
