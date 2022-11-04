@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     root to: "home#show"
     resources :businesses, path: 'virksomhed'
     resources :developers, path: 'udviklere'
+    resources :conversations, path: 'chat', except: :index do
+      resources :messages
+    end
     resources :businesses, path: 'virksomhed'
+
   end
   get '/om', to: 'about#show', as: :about
   

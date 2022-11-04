@@ -29,7 +29,24 @@ module HtmlHelper
   end
 
   def developer_pic(developer, size)
-    developer.profile_picture.present? ? developer.profile_picture.url(:size) : '/images/avatar.png'
+    if developer.profile_picture.present?
+      if size == 200
+        developer.profile_picture.url(:size_200px)
+      else
+        developer.profile_picture.url(:size_40px)
+      end
+    else
+      '/images/avatar.png'
+    end
+    # developer.profile_picture.present? ? developer.profile_picture.url(:size_200px) : '/images/avatar.png'
+  end
+
+  def new_message_path(account, developer)
+    if Conversation.exist?(account, developer)
+      link_to t('developers.show.open_conversation'), conversations_path("#{t('developers.show.conversation_param')}": @developer)
+    else
+      link_to t('developers.show.send_message'), new_conversation_path(developer: @developer), remote: true
+    end
   end
   
 end

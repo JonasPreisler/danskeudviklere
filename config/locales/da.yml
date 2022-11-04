@@ -30,6 +30,8 @@ da:
       validations:
         max_length_title: Titlen kan være max 42 karakterer
         max_length_name: Navne kan være max 22 karakterer
+        conversation:
+          should_have_a_developer_account_and_business_account: skal have både en udvikler- og virksomhedskonto
     errors:
       models:
         account: 
@@ -46,6 +48,8 @@ da:
             search_status: Søge typer
             search_status:
               blank: blank
+      messages:
+        record_invalid: Record invalid
       
   devise:
     confirmations:
@@ -181,10 +185,17 @@ da:
       invisible: 'Udvikler er ikke aktiv'
     index:
       search:
-        filter_lang: 'Søg...'
-        role_levels: 'Søg...'
-        no_results: 'Ingen resultater'
-
+        filter_lang: Søg...
+        role_levels: Søg...
+        no_results: Ingen resultater
+    show:
+      send_message: Send besked
+      open_conversation: Åbn samtalen
+      conversation_param: udvikler
+    views:
+      conversations:
+        new:
+          title: 'Start chat med'
 
   views:
     pagination:
@@ -193,6 +204,9 @@ da:
       previous: "&lsaquo; Tilbage"
       next: "Næste &rsaquo;"
       truncate: "&hellip;"
+    conversations:
+      message:
+        placeholder: Skriv besked...
   helpers:
     page_entries_info:
       one_page:

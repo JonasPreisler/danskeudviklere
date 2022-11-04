@@ -1,0 +1,172 @@
+
+<style>
+
+  .msg-body ul li.message-<%= current_account.id %> {
+      display: block;
+      width: 100%;
+      text-align: right;
+      position: relative;
+  }
+
+  .msg-body ul li.message-141:before {
+      bottom: 15px !important;
+      right: -7px !important;
+      border-color: transparent transparent #33727a transparent !important;
+      -webkit-transform: rotate(37deg) !important;
+      -ms-transform: rotate(37deg) !important;
+      transform: rotate(37deg) !important;
+  }
+
+  .msg-body ul li.message-<%= current_account.id %> p {
+      color: white !important;
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 400;
+      padding: 10px;
+      background: #33727a !important;
+      display: inline-block;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      margin-bottom: 0;
+  }
+
+  .msg-body ul li.message-<%= current_account.id %> p b {
+      display: block;
+      color: #061061;
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 500;
+  }
+
+  .msg-body ul li.message-<%= current_account.id %>:after {
+      display: block;
+      content: '';
+      clear: both;
+  }
+
+
+  li.message-<%= current_account.id %> .time {
+      margin-right: 20px;
+  }
+
+
+  .msg-body ul li.message-<%= current_account.id %> p {
+      font-size: 13px;
+      padding: 8px;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      border-bottom-left-radius: 6px;
+  }
+
+</style>
+
+<div id="chat">
+  <!-- char-area -->
+  <section class="message-area">
+    <div class="row">
+      <div class="col-12">
+        <div class="chat-area shadow-sm">
+          <!-- chatlist -->
+          <div class="chatlist">
+            <div class="modal-dialog-scrollable">
+              <div class="modal-content">
+
+                <div class="modal-body">
+                  <!-- chat-list -->
+                  <div class="chat-lists">
+                    <div class="chat-list">
+                      <% current_account.conversations.each do |conversation| %>
+                        <%= link_to conversation_path(conversation), class: 'd-flex align-items-center' do %>
+                          <div class="flex-shrink-0">
+                            <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
+                            <span class="active"></span>
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                            <div class='text-truncate d-inline-block'>
+                              <h3><%= truncate(chat_mate_name(conversation), length: 28) %></h3>
+                              <p><%= truncate(chat_mate_title(conversation), length: 32) %></p>
+                            </div>
+                          </div>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <!-- chat-list -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- chatlist -->
+
+
+
+          <!-- chatbox -->
+          <div class="chatbox">
+            <div class="modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="msg-head">
+                  <div class="row">
+                    <div class="col-8">
+                      <div class="d-flex align-items-center">
+                        <span class="chat-icon"><img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/arroleftt.svg" alt="image title"></span>
+                        <div class="flex-shrink-0">
+                          <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                          <h3><%= chat_mate_name(@conversation) %></h3>
+                          <p><%= chat_mate_title(@conversation) %></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <ul class="moreoption d-none">
+                        <li class="navbar nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                              <hr class="dropdown-divider">
+                              </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="modal-body">
+                      <div class="msg-body">
+                        <%= turbo_stream_from @conversation %>
+                        <ul id="messages" class="px-3 h-100 overflow-auto position-relative">
+                          <% @conversation.messages.order(created_at: :asc).last(10).each do |message| %>
+                            <%= render 'conversations/messages/show', message: message %>
+                          <% end %>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="send-box">
+                      <%= render 'conversations/messages/new', conversation: @conversation %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- chatbox -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- char-area -->
+</div>
+
+<script>
+
+  $("#messages").animate({ scrollTop: $('#messages').prop("scrollHeight")}, 1000);  
+
+</script>

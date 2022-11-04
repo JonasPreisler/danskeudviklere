@@ -72,6 +72,7 @@ group :test do
   gem 'rspec-rails', '~> 6.0.0'
   gem 'factory_bot'
   gem 'shoulda-matchers'
+  gem 'database_cleaner'
 end
 
 
@@ -82,3 +83,4 @@ gem "rmagick"
 
 gem 'friendly_id'
 gem 'kaminari'
+

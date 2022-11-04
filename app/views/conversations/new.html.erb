@@ -1,0 +1,14 @@
+
+      <%= form_for @conversation do |f| %>
+        <div class="modal-body">
+          <%= f.fields_for :messages do |message_form| %>
+            <%= message_form.text_area :content, class: 'form-control', required: true %>
+            <%= message_form.hidden_field :account_id, value: current_account.id %>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Luk</button>
+          <%= f.submit 'Send', class: 'btn btn-primary' %>
+          <%= hidden_field_tag :developer, @developer.slug %>
+        </div>
+      <% end %>
