@@ -12,7 +12,6 @@ module ConversationsHelper
     relation(conversation).class.name == 'Developer' ? relation(conversation).title : ''
   end
 
-
   def relation(conversation)
     chat_mate = chat_mate(conversation)
     if conversation.business.account != current_account

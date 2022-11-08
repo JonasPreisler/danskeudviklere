@@ -11,8 +11,8 @@
             <% current_account.conversations.ordered_by_recent_first.each do |conversation| %>
               <%= link_to conversation_path(conversation), class: "d-flex align-items-center rounded ps-1 #{'bg-primary_light shadow-sm' if conversation == @conversation}" do %>
                 <div class="flex-shrink-0">
-                  <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
-                  <span class="active"></span>
+                  <img class="img-fluid rounded-circle" src="<%= AvatarComponent.new(current_account).image_40px %>" alt="user img">
+                  <%# <span class="active"></span> %>
                 </div>
                 <div class="flex-grow-1 ms-3">
                   <div class='text-truncate d-inline-block'>

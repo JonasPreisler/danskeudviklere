@@ -2,6 +2,10 @@
 
 #chat {
 
+  .chat-list .flex-shrink-0 img {
+    max-height: 55px;
+  }
+
   /* HTML5 display-role reset for older browsers */
 
   ol,
@@ -27,61 +31,6 @@
       border-spacing: 0;
   }
 
-
-  /********************************
-  Typography Style
-  ******************************** */
-
-  body {
-      margin: 0;
-      font-family: 'Open Sans', sans-serif;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-  }
-
-  html {
-      min-height: 100%;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1 {
-      font-size: 36px;
-  }
-
-  h2 {
-      font-size: 30px;
-  }
-
-  h3 {
-      font-size: 26px;
-  }
-
-  h4 {
-      font-size: 22px;
-  }
-
-  h5 {
-      font-size: 18px;
-  }
-
-  h6 {
-      font-size: 16px;
-  }
-
-  p {
-      font-size: 15px;
-  }
-
-  a {
-      text-decoration: none;
-      font-size: 15px;
-  }
-
-  * {
-    margin-bottom: 0;
-  }
 
 
   /* *******************************
