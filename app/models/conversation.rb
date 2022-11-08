@@ -14,6 +14,8 @@ class Conversation < ApplicationRecord
 
   accepts_nested_attributes_for :messages
 
+  scope :ordered_by_recent_first, -> { includes(:messages).order('messages.created_at desc') }
+
   def participants
     Account.where(id: participant_ids)
   end
@@ -25,6 +27,15 @@ class Conversation < ApplicationRecord
   def developer
     Account.find(participant_ids.second).developer
   end
+
+  def self.unread_messages(account)
+    Message.unread.includes(:conversation).where(conversation: {id: account.conversations.ids}).where.not(account: account)
+  end
+
+  def set_messages_to_read(account)
+    messages.unread.where.not(account: account).update_all(read: true)
+  end
+
 
   private
 
@@ -55,7 +66,7 @@ class Conversation < ApplicationRecord
   # end
 
   def self.exist?(account, developer)
-    ids = [account.id, developer.account_id].sort
+    ids = [account.id, developer.account_id]
     Conversation.exists?(participant_ids: ids)
   end
 end

@@ -1,4 +1,5 @@
 <li class="message-<%= message.account_id %> sender">
   <p> <%= message.content %> </p>
   <span class="time"><%= message.created_at.strftime('%H:%M') %></span>
+  <%#= read_status(message, current_account) %>
 </li>

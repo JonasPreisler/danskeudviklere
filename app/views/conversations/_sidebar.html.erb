@@ -1,0 +1,44 @@
+
+<!-- chatlist -->
+<div class="chatlist">
+  <div class="modal-dialog-scrollable">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <!-- chat-list -->
+        <div class="chat-lists">
+          <div class="chat-list">
+            <% current_account.conversations.ordered_by_recent_first.each do |conversation| %>
+              <%= link_to conversation_path(conversation), class: "d-flex align-items-center rounded ps-1 #{'bg-primary_light shadow-sm' if conversation == @conversation}" do %>
+                <div class="flex-shrink-0">
+                  <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
+                  <span class="active"></span>
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <div class='text-truncate d-inline-block'>
+                    <h3><%= truncate(chat_mate_name(conversation), length: 28) %></h3>
+                    <p><%= truncate(chat_mate_title(conversation), length: 32) %></p>
+                    <p class='text-light-gray'><%= conversation.messages.last.created_at.strftime('%H:%M') %></p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <!-- chat-list -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- chatlist -->
+
+
+<script>
+
+
+  if($(window).width() < 769) {
+    $('#chat').replaceWith('<div style="min-height: 300px;">Venligst besøg denne side fra en desktop<div>');
+  }
+
+
+</script>

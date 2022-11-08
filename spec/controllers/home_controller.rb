@@ -3,7 +3,7 @@ require_relative '../support/devise'
 
 RSpec.describe HomeController, type: :controller do
   describe 'GET /' do
-    login_account
+    login_developer_account
 
     context 'from login account' dependencies
     it 'should return 200:OK' do

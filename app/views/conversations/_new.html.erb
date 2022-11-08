@@ -9,7 +9,6 @@
         <div class="modal-body">
           <%= f.fields_for :messages do |message_form| %>
             <%= message_form.text_area :content, class: 'form-control', required: true %>
-            <%= message_form.hidden_field :account_id, value: current_account.id %>
           <% end %>
         </div>
         <div class="modal-footer">

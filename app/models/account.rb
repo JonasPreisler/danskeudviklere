@@ -11,6 +11,7 @@ class Account < ApplicationRecord
   has_many :messages
 
 
+
   def profile_pic_url
     if developer && developer.profile_picture.present?
       developer.profile_picture.url

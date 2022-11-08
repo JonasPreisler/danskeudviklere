@@ -9,7 +9,7 @@ module ConversationsHelper
   end
 
   def chat_mate_title(conversation)
-    relation(conversation).title || ''
+    relation(conversation).class.name == 'Developer' ? relation(conversation).title : ''
   end
 
 
@@ -21,5 +21,12 @@ module ConversationsHelper
       chat_mate.developer
     end
   end
+
+  # def read_status(message, account)
+  #   if message.account == account &&
+  #       !message.read
+  #       sanitize('<div class="text-light-gray tx-13">Ulæst</div>')
+  #   end
+  # end
 
 end

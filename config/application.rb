@@ -33,5 +33,7 @@ module DanskeUdviklere
                           'Copenhagen'
                         end
 
+
+    # config.hosts << 'd0a4-110-235-176-99.ngrok.io'
   end
 end

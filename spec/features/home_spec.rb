@@ -3,7 +3,7 @@ require_relative '../support/devise'
 
 RSpec.describe 'home features', type: :view do
 
-  login_account
+  login_developer_account
 
   # it 'displays the name of the app and links to the developers index page' do
   #   visit '/'

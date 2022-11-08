@@ -43,9 +43,9 @@ module HtmlHelper
 
   def new_message_path(account, developer)
     if Conversation.exist?(account, developer)
-      link_to t('developers.show.open_conversation'), conversations_path("#{t('developers.show.conversation_param')}": @developer)
+      link_to sanitize("<i class='fa-regular fa-comment'></i> #{t('developers.show.open_conversation')}"), conversations_path("#{t('developers.show.conversation_param')}": @developer), class: 'btn btn-sm btn-outline-secondary'
     else
-      link_to t('developers.show.send_message'), new_conversation_path(developer: @developer), remote: true
+      link_to sanitize("<i class='fa-regular fa-comment'></i> #{t('developers.show.send_message')}"), new_conversation_path(developer: @developer), remote: true, class: 'btn btn-sm btn-outline-secondary'
     end
   end
   

@@ -27,8 +27,8 @@ RSpec.describe Conversation, type: :model do
     it { should have_many(:messages) }
     it { should validate_presence_of(:participant_ids) }
     it { should validate_uniqueness_of(:participant_ids) }
-    it { should validate_presence_of(:slug) }
-    it { should validate_uniqueness_of(:slug) }
+    # it { should validate_presence_of(:slug) }
+    # it { should validate_uniqueness_of(:slug) }
     it { should validate_presence_of(:participant_ids) }
     it { should allow_value(Array.new([@dev_account_2.id, @business_account.id])).for(:participant_ids) }
     it { should_not allow_value(Array.new([@dev_account_1.id])).for(:participant_ids) }

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  before_action :set_current_developer, :set_current_business, :set_referrer
-
+  before_action :set_current_developer, :set_current_business, if: proc {account_signed_in?}
+  before_action :set_referrer
 
 
   private
@@ -19,4 +19,5 @@ class ApplicationController < ActionController::Base
   def set_referrer
     @referrer = params[:ref] || ''
   end
+
 end

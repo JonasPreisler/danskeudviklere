@@ -8,6 +8,17 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <% if account_signed_in? %>
           <li class="nav-item">
+            <%= link_to conversations_path, class: 'nav-link p-1 me-2' do %>
+              <i class="las la-comment position-relative">
+                <% if Conversation.unread_messages(current_account).any? %>
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    <%= Conversation.unread_messages(current_account).size %>
+                  <span class="visually-hidden">unread messages</span>
+                <% end %>
+              </i>
+            </li>
+          <% end %>
+          <li class="nav-item">
             <img src='<%= AvatarComponent.new(current_account).image_40px %>' class='rounded-circle pointer' href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <ul class="dropdown-menu dropdown-menu-end m-1">
               <li><%= link_to 'Min udvikler profil', dev_path(current_account), class: 'dropdown-item' %></li>
