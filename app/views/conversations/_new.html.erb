@@ -1,22 +1,25 @@
 <div class="modal fade" tabindex="-1" id='modal'>
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title"><%= t '.developers.views.conversations.new.title' %> <%= @developer.first_name %></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><%= t '.developers.views.conversations.new.title' %> <%= @developer.first_name %></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <%= form_for @conversation do |f| %>
+          <div class="modal-body">
+            <%= f.fields_for :messages do |message_form| %>
+              <%= message_form.text_area :content, class: 'form-control', required: true %>
+            <% end %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Luk</button>
+            <%= f.submit 'Send', class: 'btn btn-primary' %>
+            <%= hidden_field_tag :developer, @developer.slug %>
+          </div>
+        <% end %>
       </div>
-      <%= form_for @conversation do |f| %>
-        <div class="modal-body">
-          <%= f.fields_for :messages do |message_form| %>
-            <%= message_form.text_area :content, class: 'form-control', required: true %>
-          <% end %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Luk</button>
-          <%= f.submit 'Send', class: 'btn btn-primary' %>
-          <%= hidden_field_tag :developer, @developer.slug %>
-        </div>
-      <% end %>
     </div>
   </div>
 </div>
+  

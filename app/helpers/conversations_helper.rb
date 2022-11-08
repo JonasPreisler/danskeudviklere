@@ -1,8 +1,9 @@
 module ConversationsHelper
 
-  def current_accounts_own_profile?(developer)
-    current_account.developer &&
-    current_account.developer == developer
+  def can_send_message?(developer)
+    current_account.business.present? &&
+    !(current_account.developer.present? &&
+      current_account.developer == developer)
   end
 
   def chat_mate(conversation)

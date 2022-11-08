@@ -13,7 +13,7 @@
           <h2 class='text-muted fw-bold'><%= @developer.name %></h2>
         </div>
 
-        <%= new_message_path(current_account, @developer) if account_signed_in? && !current_accounts_own_profile?(@developer) %>
+        <%= new_message_path(current_account, @developer) if account_signed_in? && can_send_message?(@developer) %>
 
         <hr>
 

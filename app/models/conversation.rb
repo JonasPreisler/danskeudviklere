@@ -20,11 +20,11 @@ class Conversation < ApplicationRecord
   end
 
   def business
-    participants.first.business
+    Account.find(participant_ids.first).business
   end
 
   def developer
-    participants.second.developer
+    Account.find(participant_ids.first).developer
   end
 
   def self.unread_messages(account)
