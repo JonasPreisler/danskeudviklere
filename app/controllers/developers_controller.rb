@@ -70,6 +70,20 @@ class DevelopersController < ApplicationController
     end
 
     def developer_params
-      params.require(:developer).permit(:profile_picture, :title, :about, :city, :first_name, :last_name, :website, :github, :search_status, :allow_notifications, role_levels: [], programming_languages: [], role_types: [])
+      params.require(:developer).permit(
+                                        :profile_picture,
+                                        :title,
+                                        :about,
+                                        :city,
+                                        :first_name,
+                                        :last_name,
+                                        :website,
+                                        :github,
+                                        :search_status,
+                                        :allow_notifications,
+                                        role_levels: [],
+                                        programming_languages: [],
+                                        role_types: []
+                                      )
     end
 end

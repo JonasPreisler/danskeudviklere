@@ -2,15 +2,14 @@ class Conversation < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :accounts_conversations, dependent: :destroy
   has_many :accounts, through: :accounts_conversations
-  validates_presence_of :participant_ids, :slug
+  validates_presence_of   :participant_ids, :slug
   validates_uniqueness_of :participant_ids, :slug
-  validates_length_of :participant_ids, is: 2
-  before_validation :create_slug
-  after_create :create_join_accounts_conversations
+  validates_length_of     :participant_ids, is: 2
+  before_validation       :create_slug
+  after_create            :create_join_accounts_conversations
+  # validate              :should_have_a_developer_account_and_business_account
   extend FriendlyId
   friendly_id :slug, use: :slugged
-
-  # validate :should_have_a_developer_account_and_business_account
 
   accepts_nested_attributes_for :messages
 
@@ -21,21 +20,22 @@ class Conversation < ApplicationRecord
   end
 
   def business
-    Account.find(participant_ids.first).business
+    participants.first.business
   end
 
   def developer
-    Account.find(participant_ids.second).developer
+    participants.second.developer
   end
 
   def self.unread_messages(account)
-    Message.unread.includes(:conversation).where(conversation: {id: account.conversations.ids}).where.not(account: account)
+    Message.unread.includes(:conversation)
+      .where(conversation: {id: account.conversations.ids})
+      .where.not(account: account)
   end
 
   def set_messages_to_read(account)
     messages.unread.where.not(account: account).update_all(read: true)
   end
-
 
   private
 

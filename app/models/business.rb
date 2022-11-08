@@ -1,11 +1,11 @@
 class Business < ApplicationRecord
   belongs_to :account
-  validates_presence_of :name
+  validates_presence_of   :name
+  validate                :owner_can_only_have_one_business
+  # validates_presence_of :first_name, :last_name, :title, :about, :city, :search_status
   extend FriendlyId
   friendly_id :name, use: :slugged
-  validate :owner_can_only_have_one_business
-  # validates_presence_of :first_name, :last_name, :title, :about, :city, :search_status
-  # mount_uploader :logo, LogoUploader
+  mount_uploader :logo, LogoUploader
 
 
   private

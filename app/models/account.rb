@@ -4,8 +4,8 @@ class Account < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :developer, dependent: :destroy
-  has_one :business, dependent: :destroy
+  has_one  :developer, dependent: :destroy
+  has_one  :business, dependent: :destroy
   has_many :accounts_conversations
   has_many :conversations, through: :accounts_conversations
   has_many :messages

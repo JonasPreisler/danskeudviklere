@@ -8,8 +8,8 @@ class Search < ApplicationRecord
   def self.create_new(params)
     Search.create(
       programming_languages: params[:programming_languages],
-      city: params[:city],
-      role_level: params[:role_levels]
+      city:                  params[:city],
+      role_level:            params[:role_levels]
     )
   end
 

@@ -1,5 +1,10 @@
 module ConversationsHelper
 
+  def current_accounts_own_profile?(developer)
+    current_account.developer &&
+    current_account.developer == developer
+  end
+
   def chat_mate(conversation)
     conversation.accounts.where.not(id: current_account.id).first
   end
