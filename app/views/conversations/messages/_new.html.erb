@@ -1,7 +1,7 @@
 <turbo-frame>
   <%= form_for [@conversation, @message], remote: true, data: { controller: "conversations", action: "turbo:submit-start->conversations#submit turbo:submit-end->conversations#reset turbo:before-stream-render" } do |f| %>
     <%= f.text_field :content, class: 'form-control', placeholder: "#{t 'views.conversations.message.placeholder'}" %>
-    <%= button_tag(type: 'submit') do %>
+    <%= button_tag(type: 'submit', id: 'submit_message') do %>
       <i class="fa fa-paper-plane" aria-hidden="true"></i> Send
     <% end %>
   <% end %>

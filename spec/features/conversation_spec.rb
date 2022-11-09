@@ -18,9 +18,9 @@
 #     fill_in 'conversation_messages_attributes_0_content', with: 'blablabla'
 #     expect{ click_button 'Send' }.to change(Conversation, :count).by(1)
 #     expect(page).to have_content('Super boss')
-#     fill_in 'message_content', with: 'first message.....'
+#     fill_in 'message_content', with: 'first message'
 #     expect{ click_button 'Send' }.to change(Message, :count).by(1)
-#     expect(page).to have_content('first message.....')
+#     expect(page).to have_content('first message')
 #   end
 
 # end
@@ -44,21 +44,25 @@ RSpec.describe 'message features', type: :view do
       expect(page).to have_css('#conversation_messages_attributes_0_content')
       fill_in 'conversation_messages_attributes_0_content', with: 'blablabla'
       expect{ click_button 'Send' }.to change(Conversation, :count).by(1)
+      expect(page).to have_css('#chat')
+      expect(page).to have_content('blablabla')
       expect(page).to have_content('Super boss')
-      fill_in 'message_content', with: 'first message.....'
-      expect{ click_button 'Send' }.to change(Message, :count).by(1)
+      fill_in 'message_content', with: 'first message'
+      # expect{ click_button 'Send' }.to change(Message, :count).by(1)
+      find('#submit_message').click
+      sleep 4
+      expect(page).to have_content('first message')
 
-      expect(page).to have_content('first message.....')
       Capybara.using_session :developer do
         @request.env['devise.mapping'] = Devise.mappings[:account]
         @developer_account = FactoryBot.create(:account)
         login_as @developer_account
         visit root_path
         find('i.la-comment').click
-        expect(page).to have_content('first message.....')
-        fill_in 'message_content', with: 'second message.....'
+        expect(page).to have_content('first message')
+        fill_in 'message_content', with: 'second message'
         expect{ click_button 'Send' }.to change(Message, :count).by(1)
-        expect(page).to have_content('second message.....')
+        expect(page).to have_content('second message')
       end
     end
   end
