@@ -20,6 +20,8 @@ FactoryBot.define do
     sequence(:about)         {'Lorem ipsum'}
     sequence(:city)          {'København'}
     # sequence(:profile_picture) "#{Rails.root}/public/images/avatar.png"
+    sequence(:role_levels)    {['junior', 'midlevel']}
+    sequence(:programming_languages)    {['Ruby', 'Ruby on Rails']}
     sequence(:role_types)    {['fulltime', 'parttime', 'remote']}
     sequence(:search_status) {0}
     sequence(:website)       {'https://preisler.io'}

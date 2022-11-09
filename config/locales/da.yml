@@ -187,7 +187,8 @@ da:
       search:
         filter_lang: Søg...
         role_levels: Søg...
-        no_results: Ingen resultater
+        no_results: Ingen resultater...
+        results: resultater
     show:
       send_message: Send besked
       open_conversation: Åbn samtalen

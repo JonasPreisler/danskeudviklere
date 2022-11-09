@@ -1,6 +1,6 @@
 <% if @developers.any? %>
   <div class='text-end py-1'>
-    <%= @developers_size %> resultater
+    <%= @developers_size %> <%= t 'developers.index.search.results' %>
   </div>
   <% @developers.each do |developer| %>
     <div class='pb-3'>
@@ -11,6 +11,6 @@
   <%= paginate @developers %>
 <% else %>
   <div class='pt-5 fs-5 mt-5 mt-sm-0'>
-    <%= t 'developers.index.search.no_results' %>...
+    <%= t 'developers.index.search.no_results' %>
   </div>
 <% end %>
