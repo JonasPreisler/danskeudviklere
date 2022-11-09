@@ -65,7 +65,7 @@
                 👍🏼
               </div>
             </div>
-            <div class="col">
+            <div class="col developer_city_wrapper">
               <label for="developer_city" class="text-muted">Område</label>
               <select name='developer[city]' id="developer_city" class='form-control select2' required>
                 <option selected='selected'>Vælg by</option>
@@ -106,7 +106,7 @@
                 👍🏼
               </div>
             </div>
-            <div class='col-6'>
+            <div class='col-6 developer_programming_languages_wrapper'>
               <label for="developer_programming_languages" class="text-muted nowrap">Sprog/frameworks</label>
               <select name='developer[programming_languages][]' multiple='multiple' id="developer_programming_languages" class='form-control select2 w-100' required>
                 <%= $DEVELOPER_LANGUAGES.sort.each do |language| %>

@@ -66,12 +66,7 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  ######################### DEVISE #########################
-
   # Add login/logout helpers from Devise
-  config.include Devise::Test::ControllerHelpers, type: :controller
-  config.include Devise::Test::ControllerHelpers, type: :view
-
   config.include Turbo::FramesHelper
   config.include Turbo::StreamsHelper
 
@@ -92,13 +87,19 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.before(:each) do
+  config.before :each do
+    if Capybara.current_driver == :rack_test
+      DatabaseCleaner.strategy = :transaction
+    else
+      DatabaseCleaner.strategy = :truncation
+    end
     DatabaseCleaner.start
   end
 
-  config.after(:each) do
+  config.append_after(:each) do
     DatabaseCleaner.clean
   end
+  
   
 end
 
@@ -109,3 +110,7 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
+Capybara.server do |app, port|
+  require 'rack/handler/thin'
+  Rack::Handler::Thin.run(app, :Port => port)
+end

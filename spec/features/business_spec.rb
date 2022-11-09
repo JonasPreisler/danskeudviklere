@@ -1,17 +1,9 @@
 require 'rails_helper'
 require_relative '../support/devise'
 
-RSpec.describe 'home features', type: :view do
+RSpec.describe 'business features', type: :feature do
 
   login_developer_account
-
-  # it 'displays the name of the app and links to the developers index page' do
-  #   visit '/'
-  #   expect(page).to have_content('Danske Udviklere')
-  #   click_link('Søg i listen')
-  #   expect(current_path).to eql('/udviklere')
-  #   expect(page).to have_content('Udviklere')
-  # end
 
   it 'can create a business' do
     visit root_path
