@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :set_current_developer, :set_current_business, if: proc {account_signed_in?}
   before_action :set_referrer
-  helper Turbo::FramesHelper if Rails.env.test?
-  helper Turbo::StreamsHelper if Rails.env.test?
 
 
   private

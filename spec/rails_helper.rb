@@ -72,6 +72,9 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
 
+  config.include Turbo::FramesHelper
+  config.include Turbo::StreamsHelper
+
   # Include Warden test helpers specifically for login/logout
   config.include Warden::Test::Helpers
 
