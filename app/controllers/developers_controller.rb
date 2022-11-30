@@ -2,6 +2,7 @@ class DevelopersController < ApplicationController
   before_action :set_developer, only: %i[ show update destroy ]
   before_action :authenticate_account!, only: %i[ new edit create update ]
   before_action :redirect_if_account_already_has_a_developer, only: %i[new]
+  before_action :check_if_city_is_blank, only: :create
 
   def index
     if params[:search].present?
@@ -60,6 +61,12 @@ class DevelopersController < ApplicationController
   end
 
   private
+
+    def check_if_city_is_blank
+      if params[:developer][:city] == 'Vælg by'
+        redirect_to new_developer_path, notice: 'Hov 😮 venligst vælg dit område'
+      end
+    end
 
     def redirect_if_account_already_has_a_developer
       redirect_to developer_path(current_account.developer) if current_account.developer

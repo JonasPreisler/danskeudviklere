@@ -53,14 +53,6 @@ RSpec.describe 'search feature', type: :feature, js: true do
     expect(page).to have_css('.card-body', text: 'København')
   end
 
-  it 'can search stack + city' do
-    find('.cities label[for="search_city_København"').click
-    find('.languages label[for="search_lang_Ruby"').click
-    expect(page).to have_css('.card-body .tag', text: 'Ruby on Rails')
-    expect(page).to have_css('.card-body', text: 'København')
-    expect(page).to have_content('Test Developer')
-  end
-  
   it 'can search stack + city 0 results' do
     find('.cities label[for="search_city_Århus"').click
     find('.languages label[for="search_lang_Ruby"').click
@@ -69,5 +61,14 @@ RSpec.describe 'search feature', type: :feature, js: true do
     expect(page).to_not have_content('Test Developer')
     expect(page).to have_content("#{I18n.t 'developers.index.search.no_results'}")
   end
+  
+  it 'can search stack + city' do
+    find('.cities label[for="search_city_København"').click
+    find('.languages label[for="search_lang_Ruby"').click
+    expect(page).to have_css('.card-body .tag', text: 'Ruby on Rails')
+    expect(page).to have_css('.card-body', text: 'København')
+    expect(page).to have_content('Test Developer')
+  end
+  
 end
 

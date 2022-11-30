@@ -67,7 +67,7 @@
             </div>
             <div class="col developer_city_wrapper">
               <label for="developer_city" class="text-muted">Område</label>
-              <select name='developer[city]' id="developer_city" class='form-control select2' required>
+              <select name='developer[city]' id="developer_city" class='form-control select2' required='required'>
                 <option selected='selected'>Vælg by</option>
                 <%= $DEVELOPER_COUNTRY_AREAS.each do |area| %>
                   <option value='<%= area %>' <%= 'selected' if area == @developer.city %>><%= area %></option>
